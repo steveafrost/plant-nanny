@@ -23,8 +23,6 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Use Devise to handle user authentication
 gem 'devise'
-# Use Foundation to style CSS
-gem 'foundation-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
