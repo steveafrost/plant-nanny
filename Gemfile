@@ -45,6 +45,9 @@ group :development, :test do
 
   # Use rspec for testing suite
   gem 'rspec-rails', '~> 3.5'
+
+  # Use Faker to generate data for rake db:seed
+  gem 'faker'
 end
 
 
