@@ -5,9 +5,12 @@ class PlantsController < ApplicationController
   end
 
   def new
+    @plant = Plant.new
   end
 
   def create
+    @plant = Plant.create(plant_params)
+    redirect_to plant_path(@plant)
   end
 
   def show
@@ -20,5 +23,11 @@ class PlantsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def plant_params
+    params.require(:plant).permit(:name, :difficulty, :amount_of_light, :amount_of_water, :frequency_of_water, :fun_fact)
   end
 end

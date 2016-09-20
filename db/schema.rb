@@ -14,10 +14,11 @@ ActiveRecord::Schema.define(version: 20160919233513) do
 
   create_table "plants", force: :cascade do |t|
     t.string   "name"
-    t.string   "fun_fact"
-    t.integer  "amount_of_light"
-    t.integer  "frequency_of_water"
     t.integer  "difficulty"
+    t.integer  "amount_of_light"
+    t.integer  "amount_of_water"
+    t.integer  "frequency_of_water"
+    t.string   "fun_fact"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
   end

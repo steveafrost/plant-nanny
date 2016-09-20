@@ -1,0 +1,24 @@
+<%= form_for(plant) do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :difficulty %>
+  <%= f.number_field :difficulty %>
+
+  <%= f.label :amount_of_light %>
+  <%= f.number_field :amount_of_light %>
+
+  <%= f.label :amount_of_water %>
+  <%= f.number_field :amount_of_water %>
+
+  <%= f.label :frequency_of_water %>
+  <%= f.number_field :frequency_of_water %>
+
+  <%= f.label :fun_fact %>
+  <%= f.text_area :fun_fact, size:"50x20" %>
+
+  <%= f.submit %>
+
+<% end %>
+
