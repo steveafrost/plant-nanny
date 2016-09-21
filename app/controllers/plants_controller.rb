@@ -2,7 +2,7 @@ class PlantsController < ApplicationController
   before_action :find_plant, except: [:index, :new, :create]
 
   def index
-    @plants = Plant.all
+    @plants = Plant.random
   end
 
   def new
