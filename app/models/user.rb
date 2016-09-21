@@ -4,6 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :plants
-  has_many :tips, :through => :plants
+  has_many :tips
+  has_many :plants, :through => :tips
 end
