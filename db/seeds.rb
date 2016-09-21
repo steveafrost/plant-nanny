@@ -17,17 +17,17 @@
   Tip.create(content: Faker::Lorem.paragraphs)
 end
 
-counter = 1
-Plant.all.each do |plant|
-  plant.user_id = counter
-  plant.save
-  counter += 1
-end
+# counter = 1
+# Plant.all.each do |plant|
+#   plant.user_id = counter
+#   plant.save
+#   counter += 1
+# end
 
-counter = 1
-Tip.all.each do |tip|
-  tip.user_id = counter
-  tip.plant_id = counter
-  tip.save
-  counter += 1
-end
+# counter = 1
+# Tip.all.each do |tip|
+#   tip.user_id = counter
+#   tip.plant_id = counter
+#   tip.save
+#   counter += 1
+# end
