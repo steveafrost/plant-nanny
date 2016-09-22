@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20160919233513) do
 
   create_table "tips", force: :cascade do |t|
     t.string   "content"
+    t.integer  "plant_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
