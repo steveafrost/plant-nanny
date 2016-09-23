@@ -1,4 +1,4 @@
 class Tip < ApplicationRecord
   belongs_to :user
-  belongs_to :post
+  belongs_to :plant
 end
