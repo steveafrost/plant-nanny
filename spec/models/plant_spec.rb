@@ -7,7 +7,8 @@ RSpec.describe Plant, :type => :model do
   end
 
   it 'class method #tips lists all tips' do
-    expect(Plant.tips).should be_empty
+    plant = FactoryGirl.create(:plant)
+    expect(plant.tips).to be_empty
     end
 
   it 'is invalid without a name' do
