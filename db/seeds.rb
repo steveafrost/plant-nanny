@@ -1,3 +1,5 @@
+counter = 1
+
 20.times do
   Plant.create(
     name: Faker::Name.last_name,
@@ -14,13 +16,10 @@
     password: Faker::Internet.password
   )
 
-  Tip.create(content: Faker::Lorem.paragraphs)
+  Tip.create(content: Faker::Lorem.paragraphs, plant_id: counter, user_id: counter)
+  counter += 1
 end
 
-# counter = 1
-# Tip.all.each do |tip|
-#   tip.user_id = counter
-#   tip.plant_id = counter
-#   tip.save
-#   counter += 1
-# end
+20.times do
+  Tip.create(content: Faker::Lorem.paragraphs, plant_id: rand(20), user_id: rand(20))
+end
