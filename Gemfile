@@ -44,7 +44,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 
-    # Use rspec, capybara, factorygirl, and database_cleaner for testing
+  # Use rspec, capybara, factorygirl, and database_cleaner for testing
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails'
   gem 'selenium-webdriver'
@@ -57,6 +57,8 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem 'guard-rspec', require: false
+  gem 'guard-livereload'
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
