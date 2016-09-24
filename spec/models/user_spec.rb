@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  it 'should require a username' do
-    expect (User.new(:email => "")).to be_invalid
+  it 'should require a email' do
+    expect(FactoryGirl.create(:user, :email => nil)).to be_invalid
   end
 
   it 'should require a password' do
-    expect (User.new(:email => "test", :password => "")).to be_invalid
+    expect(FactoryGirl.create(:user, :password => nil)).to raise_error(ActiveRecord::RecordInvalid, "Validation failed: Password can't be blank")
   end
 
   it 'can visit their profile' do

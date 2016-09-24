@@ -47,6 +47,7 @@ group :development, :test do
     # Use rspec, capybara, factorygirl, and database_cleaner for testing
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails'
+  gem 'selenium-webdriver'
   gem 'capybara'
   gem 'database_cleaner'
 
