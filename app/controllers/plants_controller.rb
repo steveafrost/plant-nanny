@@ -5,6 +5,10 @@ class PlantsController < ApplicationController
     @plants = Plant.all
   end
 
+  def random
+    @plants = Plant.random
+  end
+
   def new
     @plant = Plant.new
     @tip = @plant.tips.build
@@ -26,10 +30,6 @@ class PlantsController < ApplicationController
   end
 
   def destroy
-  end
-
-  def random
-    @plants = Plant.random
   end
 
   private

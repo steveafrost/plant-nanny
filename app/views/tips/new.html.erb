@@ -1,2 +1,8 @@
-<h1>Tips#new</h1>
-<p>Find me in app/views/tips/new.html.erb</p>
+<div class="container col-md-8 col-md-offset-2">
+  <h2>Add a New Tip</h2>
+
+  <%= form_for @tip do |f| %>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  <% end %>
+</div>
