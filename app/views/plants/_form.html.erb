@@ -11,28 +11,28 @@
       <div class="col-xs-3">
         <div class="form-group">
           <%= f.label :difficulty, " Difficulty", :class => "fa fa-line-chart" %>
-          <%= f.range_field :difficulty, min: 1, max: 5, :class => "form-control" %>
+          <%= f.range_field :difficulty, :in => 1..5, :class => "form-control" %>
         </div>
       </div>
 
       <div class="col-xs-3">
         <div class="form-group">
           <%= f.label :amount_of_light, " Amount", :class => "fa fa-sun-o" %>
-          <%= f.range_field :amount_of_light, min: 1, max: 5, :class => "form-control" %>
+          <%= f.range_field :amount_of_light, :in => 1..5, :class => "form-control" %>
         </div>
       </div>
 
       <div class="col-xs-3">
         <div class="form-group">
           <%= f.label :amount_of_water, " Amount", :class => "fa fa-tint" %>
-          <%= f.range_field :amount_of_water, min: 1, max: 5, :class => "form-control" %>
+          <%= f.range_field :amount_of_water, :in => 1..5, :class => "form-control" %>
         </div>
       </div>
 
       <div class="col-xs-3">
         <div class="form-group">
           <%= f.label :frequency_of_water, " Frequency", :class => "fa fa-tint" %>
-          <%= f.range_field :frequency_of_water, min: 1, max: 5, :class => "form-control" %>
+          <%= f.range_field :frequency_of_water, :in => 1..5, :class => "form-control" %>
         </div>
       </div>
     </div>

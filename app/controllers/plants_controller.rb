@@ -11,7 +11,8 @@ class PlantsController < ApplicationController
   end
 
   def create
-    @plant = Plant.create(plant_params)
+    @plant = Plant.find_by_name(params[:plant][:name]) || Plant.create(plant_params)
+    current_user.plants << @plant
     redirect_to plant_path(@plant)
   end
 
