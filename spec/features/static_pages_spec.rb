@@ -14,7 +14,9 @@ RSpec.describe "Static pages", :type => :feature do
       expect(page.status_code).to eq(200)
     end
 
-    it "renders the :about view" do
+    it "renders the about view" do
+      visit about_path
+      expect(page).to have_content("Plant Nanny")
     end
   end
 
@@ -24,11 +26,13 @@ RSpec.describe "Static pages", :type => :feature do
       expect(page.status_code).to eq(200)
     end
 
-    it "shows all of users plants" do
+    it "shows users plants" do
       user = build(:user)
-      plants = user.plants.first
+      plant = build(:plant)
+      user.plants << plant
+      first_plant = user.plants.first.name
       visit profile_path
-      expect(page).to have_content(plants)
+      expect(page).to have_content(first_plant)
     end
   end
 end
