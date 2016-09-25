@@ -3,20 +3,40 @@
   <%= f.label :name %>
   <%= f.text_field :name %>
 
+  <br>
+
   <%= f.label :difficulty %>
   <%= f.number_field :difficulty %>
+
+  <br>
 
   <%= f.label :amount_of_light %>
   <%= f.number_field :amount_of_light %>
 
+
+  <br>
+
   <%= f.label :amount_of_water %>
   <%= f.number_field :amount_of_water %>
+
+  <br>
 
   <%= f.label :frequency_of_water %>
   <%= f.number_field :frequency_of_water %>
 
+  <br>
+
   <%= f.label :fun_fact %>
   <%= f.text_area :fun_fact %>
+
+  <br>
+
+  <%= f.fields_for :tips do |ff| %>
+    <%= ff.label "Tip" %>
+    <%= ff.text_area :content %>
+  <% end %>
+
+  <br>
 
   <%= f.submit %>
 

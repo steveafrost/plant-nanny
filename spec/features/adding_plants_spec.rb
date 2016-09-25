@@ -9,7 +9,7 @@ RSpec.describe "Plant management -", :type => :feature do
 
   describe "adding a plant" do
     it "adds that plant to the users collection of plants" do
-      user = current_user
+      user = User.find_by(email: "test@test.com")
       plant = create(:plant)
       visit new_plant_path
       fill_in "plant[name]", with: plant.name
