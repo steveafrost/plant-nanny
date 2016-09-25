@@ -1,8 +1,8 @@
 class PlantsController < ApplicationController
-  before_action :find_plant, except: [:index, :new, :create]
+  before_action :find_plant, except: [:index, :new, :create, :random]
 
   def index
-    @plants = Plant.random
+    @plants = Plant.all
   end
 
   def new
@@ -26,6 +26,10 @@ class PlantsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def random
+    @plants = Plant.random
   end
 
   private

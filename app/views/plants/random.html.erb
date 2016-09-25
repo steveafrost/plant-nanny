@@ -1,0 +1,9 @@
+<h1>Ten Random Plants</h1>
+<% @plants.each do |plant| %>
+  <h3><%= plant.name %></h3>
+  <h4>Difficulty: <%= plant.difficulty %></h4>
+  <h4>Amount of Light: <%= plant.amount_of_light %></h4>
+  <h4>Amount of Water: <%= plant.amount_of_water %></h4>
+  <h4>Frequency of Water: <%= plant.frequency_of_water %></h4>
+  <h4>Fun Fact: <%= plant.fun_fact %></h4>
+<% end %>
