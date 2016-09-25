@@ -1,9 +1,13 @@
-<% flash.each do |name, msg| %>
-  <% if msg.class == Array %>
-    <% msg.each do |message| %>
-      <%= content_tag :div, message, :id => "flash_#{name}" %>
-    <% end %>
-  <% else %>
-    <%= content_tag :div, msg, :id => "flash_#{name}" %>
-  <% end %>
+<% if notice || alert %>
+  <div class="alert <%= notice ? "alert-info" : "" %><%= alert ? "alert-danger" : "" %> alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert">
+    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <div>
+      <% if notice %>
+        <%= notice %>
+      <% elsif alert %>
+        <%= alert %>
+      <% end %>
+    </div>
+  </div>
 <% end %>
