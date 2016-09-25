@@ -1,3 +1,5 @@
-<% current_user.plants.each do |plant| %>
-  <%= plant.name %>
-<% end %>
+<ul style="list-style: none;">
+  <% current_user.plants.each do |plant| %>
+    <i class="fa fa-leaf big-icon"> <%= link_to plant.name, plant_path(plant) %></i>
+  <% end %>
+</ul>
