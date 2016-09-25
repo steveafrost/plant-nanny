@@ -16,10 +16,10 @@ counter = 1
     password: Faker::Internet.password
   )
 
-  Tip.create(content: Faker::Lorem.paragraphs, plant_id: counter, user_id: counter)
+  Tip.create(content: Faker::Lorem.paragraph, plant_id: counter, user_id: counter)
   counter += 1
 end
 
 20.times do
-  Tip.create(content: Faker::Lorem.paragraphs, plant_id: rand(20), user_id: rand(20))
+  Tip.create(content: Faker::Lorem.paragraph, plant_id: rand(20), user_id: rand(20))
 end

@@ -1,0 +1,5 @@
+<h4><%= @tip.user.name %> left a tip <%= time_ago_in_words(@tip.created_at) %> ago about <%= link_to @tip.plant.name, plant_path(@tip.plant) %></h4>
+<blockquote>
+  <p><%= @tip.content %></p>
+</blockquote>
+
