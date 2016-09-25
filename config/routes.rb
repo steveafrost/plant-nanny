@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :plants
+  resources :plants do
+    resources :tips
+  end
+
   get '/random', to: 'plants#random'
 end

@@ -3,6 +3,10 @@
 <h2>Amount of Light: <%= @plant.amount_of_light %></h2>
 <h2>Amount of Water: <%= @plant.amount_of_water %></h2>
 <h2>Frequency of Water: <%= @plant.frequency_of_water %></h2>
-<p><b>Fun Fact: </b><%= @plant.fun_fact %></p>
-
-<hr>
+<h3>Fun Fact: <%= @plant.fun_fact %></h3>
+<% @plant.tips.each do |tip| %>
+  <fieldset>
+    <%= tip.user.name || "Guest" %> • <%= link_to time_ago_in_words(tip.created_at), plant_tip_path(tip) %>
+    <%= tip.content %>
+  </fieldset>
+<% end %>
