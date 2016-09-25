@@ -10,6 +10,7 @@ class StaticController < ApplicationController
       render :profile
     else
       flash[:alert] = "You must be logged in to view your plants"
+      redirect_to root_path
     end
   end
 end
