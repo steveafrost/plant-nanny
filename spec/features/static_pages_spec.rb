@@ -1,17 +1,17 @@
 require 'rails_helper'
 
-RSpec.describe StaticController do
+RSpec.describe "Static pages", :type => :feature do
   describe "GET #home" do
     it "is a valid page" do
-      get :home
-      expect(response.status).to eq(200)
+      visit root_path
+      expect(page.status_code).to eq(200)
     end
   end
 
   describe "GET #about" do
     it "is a valid page" do
-      get :about
-      expect(response.status).to eq(200)
+      visit about_path
+      expect(page.status_code).to eq(200)
     end
 
     it "renders the :about view" do
@@ -20,15 +20,15 @@ RSpec.describe StaticController do
 
   describe "GET #profile" do
     it "is a valid page" do
-      get :profile
-      expect(response.status).to eq(200)
+      visit profile_path
+      expect(page.status_code).to eq(200)
     end
 
     it "shows all of users plants" do
       user = build(:user)
-      plants = user.plants
-      get :profile
-      expect(page).to include plants
+      plants = user.plants.first
+      visit profile_path
+      expect(page).to have_content(plants)
     end
   end
 end
