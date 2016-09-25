@@ -12,7 +12,7 @@ class PlantsController < ApplicationController
 
   def create
     @plant = Plant.find_by_name(params[:plant][:name]) || Plant.create(plant_params)
-    current_user.plants << @plant
+    current_user.plants << @plant unless current_user.plants.includes(@plant)
     redirect_to plant_path(@plant)
   end
 
