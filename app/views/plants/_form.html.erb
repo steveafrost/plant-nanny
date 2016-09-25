@@ -1,44 +1,55 @@
-<%= form_for plant do |f| %>
+<div class="container col-md-8 col-md-offset-2">
+  <h2>Add a New Plant</h2>
+  <%= form_for plant do |f| %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, :class => "form-control"  %>
+    </div>
 
-  <br>
+    <div class="row">
+      <div class="col-xs-3">
+        <div class="form-group">
+          <%= f.label :difficulty, " Difficulty", :class => "fa fa-line-chart" %>
+          <%= f.range_field :difficulty, min: 1, max: 5, :class => "form-control" %>
+        </div>
+      </div>
 
-  <%= f.label :difficulty %>
-  <%= f.number_field :difficulty %>
+      <div class="col-xs-3">
+        <div class="form-group">
+          <%= f.label :amount_of_light, " Amount", :class => "fa fa-sun-o" %>
+          <%= f.range_field :amount_of_light, min: 1, max: 5, :class => "form-control" %>
+        </div>
+      </div>
 
-  <br>
+      <div class="col-xs-3">
+        <div class="form-group">
+          <%= f.label :amount_of_water, " Amount", :class => "fa fa-tint" %>
+          <%= f.range_field :amount_of_water, min: 1, max: 5, :class => "form-control" %>
+        </div>
+      </div>
 
-  <%= f.label :amount_of_light %>
-  <%= f.number_field :amount_of_light %>
+      <div class="col-xs-3">
+        <div class="form-group">
+          <%= f.label :frequency_of_water, " Frequency", :class => "fa fa-tint" %>
+          <%= f.range_field :frequency_of_water, min: 1, max: 5, :class => "form-control" %>
+        </div>
+      </div>
+    </div>
 
+    <div class="form-group">
+      <%= f.label :fun_fact %>
+      <%= f.text_area :fun_fact, :class => "form-control" %>
+    </div>
 
-  <br>
+    <div class="form-group">
+    <%= f.fields_for :tips do |ff| %>
+      <%= ff.label "Tip" %>
+      <%= ff.text_area :content, :class => "form-control" %>
+    <% end %>
+    </div>
 
-  <%= f.label :amount_of_water %>
-  <%= f.number_field :amount_of_water %>
+    <%= f.submit :class => "btn btn-success" %>
 
-  <br>
-
-  <%= f.label :frequency_of_water %>
-  <%= f.number_field :frequency_of_water %>
-
-  <br>
-
-  <%= f.label :fun_fact %>
-  <%= f.text_area :fun_fact %>
-
-  <br>
-
-  <%= f.fields_for :tips do |ff| %>
-    <%= ff.label "Tip" %>
-    <%= ff.text_area :content %>
   <% end %>
-
-  <br>
-
-  <%= f.submit %>
-
-<% end %>
-
+</div>

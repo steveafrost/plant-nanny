@@ -26,6 +26,7 @@ gem 'devise'
 
 # Use Bootstrap to style CSS
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'font-awesome-sass', '~> 4.6.2'
 gem 'autoprefixer-rails'
 
 # Use Capistrano for deployment
