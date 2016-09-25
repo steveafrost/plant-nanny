@@ -1,12 +1,50 @@
-<h1><%= @plant.name %></h1>
-<h2>Difficulty: <%= @plant.difficulty %></h2>
-<h2>Amount of Light: <%= @plant.amount_of_light %></h2>
-<h2>Amount of Water: <%= @plant.amount_of_water %></h2>
-<h2>Frequency of Water: <%= @plant.frequency_of_water %></h2>
-<h3>Fun Fact: <%= @plant.fun_fact %></h3>
-<% @plant.tips.each do |tip| %>
-  <fieldset>
-    <%= tip.user.name || "Guest" %> • <%= link_to time_ago_in_words(tip.created_at), plant_tip_path(tip) %>
-    <%= tip.content %>
-  </fieldset>
-<% end %>
+<div class="container">
+  <h1><%= @plant.name %></h1>
+
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>Statistics</h4>
+      </div>
+      <div class="panel-body">
+        <div class="col-xs-3">
+          <i class="fa fa-line-chart big-icon"> <%= @plant.difficulty %></i>
+        </div>
+        <div class="col-xs-3">
+          <i class="fa fa-sun-o big-icon"> <%= @plant.amount_of_light %></i>
+        </div>
+        <div class="col-xs-3">
+          <i class="fa fa-tint big-icon"> <%= @plant.amount_of_water %></i>
+        </div>
+        <div class="col-xs-3">
+          <i class="fa fa-clock-o big-icon"> <%= @plant.frequency_of_water %></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4>Fun Fact</h4>
+      </div>
+      <div class="panel-body">
+        <%= @plant.fun_fact %>
+      </div>
+    </div>
+  </div>
+
+
+    <div class="row">
+      <% @plant.tips.each do |tip| %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <%= tip.user.name || "Guest" %> • <%= link_to time_ago_in_words(tip.created_at), plant_tip_path(tip) %>
+          </div>
+          <div class="panel-body">
+            <%= tip.content %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+</div>
