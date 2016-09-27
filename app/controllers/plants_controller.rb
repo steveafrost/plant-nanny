@@ -11,11 +11,12 @@ class PlantsController < ApplicationController
 
   def new
     @plant = Plant.new
-    @tip = @plant.tips.build
+    @plant.tips.new
   end
 
   def create
-    @plant = Plant.find_by_name(params[:plant][:name]) || Plant.create(plant_params)
+    @plant = Plant.find_by_name(params[:plant][:name]) || @plant = Plant.create(plant_params)
+    @plant.tips.last.user_id = current_user.id
     current_user.plants << @plant unless current_user.plants.includes(@plant)
     redirect_to plant_path(@plant)
   end
@@ -35,7 +36,7 @@ class PlantsController < ApplicationController
   private
 
   def plant_params
-    params.require(:plant).permit(:id, :name, :difficulty, :amount_of_light, :amount_of_water, :frequency_of_water, :fun_fact)
+    params.require(:plant).permit(:id, :name, :difficulty, :amount_of_light, :amount_of_water, :frequency_of_water, :fun_fact, :tips_attributes => [:content])
   end
 
   def find_plant

@@ -1,3 +1,4 @@
+<h4><i class="fa fa-plus"><%= link_to "Add a New Plant", new_plant_path %></i></h4>
 <ul style="list-style: none;">
   <% current_user.plants.each do |plant| %>
     <i class="fa fa-leaf big-icon"> <%= link_to plant.name, plant_path(plant) %></i>
