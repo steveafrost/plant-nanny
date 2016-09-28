@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/tips/new', to: 'tips#new', as: 'new_tip'
   get '/plants/random', to: 'plants#random'
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :plants do
     resources :tips
