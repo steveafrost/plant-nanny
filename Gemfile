@@ -23,6 +23,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Use Devise to handle user authentication
 gem 'devise'
+gem 'omniauth-facebook'
 
 # Use Bootstrap to style CSS
 gem 'bootstrap-sass', '~> 3.2.0'
