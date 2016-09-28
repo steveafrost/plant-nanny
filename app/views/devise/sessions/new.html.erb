@@ -1,5 +1,12 @@
 <div class="container col-sm-4 col-sm-offset-4">
-  <h2>Log in</h2>
+  <br><br>
+  <center>
+  <%= link_to "Log in with Facebook", user_facebook_omniauth_authorize_path, :class => "btn btn-primary log-in" %>
+  </center>
+
+  <br>
+  <center><h4>------ OR ------</h4></center>
+  <br>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group">
@@ -20,7 +27,7 @@
     <% end -%>
 
     <div class="actions">
-      <%= f.submit "Log in", :class => "btn btn-primary" %>
+      <%= f.submit "Log in", :class => "btn btn-primary log-in" %>
     </div>
   <% end %>
 
