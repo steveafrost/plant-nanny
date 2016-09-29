@@ -4,9 +4,9 @@ class Plant < ApplicationRecord
 
   accepts_nested_attributes_for :tips
 
-  validates :name, :fun_fact, presence: true
-  validates :difficulty, :amount_of_light, :amount_of_water, :frequency_of_water, :inclusion => 1..5
-  validates_associated :tips
+  # validates :name, :fun_fact, presence: true
+  # validates :difficulty, :amount_of_light, :amount_of_water, :frequency_of_water, :inclusion => 1..5
+  # validates_associated :tips
 
   def self.random
     Plant.order("RANDOM()").limit(10)

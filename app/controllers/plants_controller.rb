@@ -11,13 +11,15 @@ class PlantsController < ApplicationController
 
   def new
     @plant = Plant.new
-    @plant.tips.new
+    @plant.tips.build
   end
 
   def create
-    @plant = Plant.find_by_name(params[:plant][:name]) || @plant = Plant.create(plant_params)
+    @plant = Plant.find_by_name(params[:plant][:name]) || @plant = Plant.new(plant_params)
     @plant.tips.last.user_id = current_user.id
+
     current_user.plants << @plant unless current_user.plants.includes(@plant)
+    @plant.save
     redirect_to plant_path(@plant)
   end
 
