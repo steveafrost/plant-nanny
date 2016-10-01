@@ -16,7 +16,7 @@ class PlantsController < ApplicationController
 
   def create
     @plant = Plant.new(plant_params)
-    @plant.tips.build(content: params[:tips_attributes][][:content], user_id: current_user.id)
+    @plant.tips.build(content: params[:plant][:tips_attributes])
     @plant.save
     redirect_to plant_path(@plant)
   end

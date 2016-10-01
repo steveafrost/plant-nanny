@@ -1,8 +1,10 @@
 <div class="container col-md-8 col-md-offset-2">
   <h2>Add a New Tip</h2>
 
-  <%= form_for @tip do |f| %>
+  <%= form_for [@plant, @tip] do |f| %>
     <%= f.label :content %>
     <%= f.text_area :content %>
+
+    <%= f.submit %>
   <% end %>
 </div>
