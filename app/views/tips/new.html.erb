@@ -1,10 +1,13 @@
-<div class="container col-md-8 col-md-offset-2">
-  <h2>Add a New Tip</h2>
+<div class="container col-sm-6 col-sm-offset-3">
+  <h2>New Tip for <%= @plant.name %></h2>
 
   <%= form_for [@plant, @tip] do |f| %>
-    <%= f.label :content %>
-    <%= f.text_area :content %>
 
-    <%= f.submit %>
+    <div class="form-group">
+      <%= f.label :content %>
+      <%= f.text_area :content, :class => "form-control" %>
+    </div>
+
+    <%= f.submit :class => "btn btn-success" %>
   <% end %>
 </div>
