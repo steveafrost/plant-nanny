@@ -1,12 +1,13 @@
 class TipsController < ApplicationController
+  before_action :set_plant
 
   def new
-    @plant = Plant.find(params[:plant_id])
-    @tip = @plant.tips.build
+    @tip = Tip.new
   end
 
   def create
-    @plant.update(tip_params)
+    @plant.tips << Tip.create(tip_params)
+    redirect_to plant_tip_path(@plant, @plant.tips.last)
   end
 
   def show
@@ -16,6 +17,10 @@ class TipsController < ApplicationController
   private
 
   def tip_params
-    params.require(:tip).permit(:content)
+    params.require(:tip).permit(:content).merge(user_id: current_user.id)
+  end
+
+  def set_plant
+    @plant = Plant.find(params[:plant_id])
   end
 end
