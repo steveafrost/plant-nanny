@@ -38,7 +38,7 @@
     <% @plant.tips.each do |tip| %>
       <blockquote>
         <p><%= tip.content %></p>
-        <footer><%= tip.user.name || "Guest" %> • <%= link_to "#{time_ago_in_words(tip.created_at)} ago", plant_tip_path(tip) %></cite></footer>
+        <footer><%= tip.user.name || "Anonymous" %> • <%= link_to "#{time_ago_in_words(tip.created_at)} ago", plant_tip_path(tip.plant, tip) %></cite></footer>
       </blockquote>
     <% end %>
   </div>
