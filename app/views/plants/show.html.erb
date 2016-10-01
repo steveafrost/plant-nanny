@@ -36,10 +36,7 @@
 
   <div class="row">
     <% @plant.tips.each do |tip| %>
-      <blockquote>
-        <p><%= tip.content %></p>
-        <footer><%= tip.user.name || "Anonymous" %> • <%= link_to "#{time_ago_in_words(tip.created_at)} ago", plant_tip_path(tip.plant, tip) %></cite></footer>
-      </blockquote>
+      <%= render partial: 'tips/list_tips', locals: {tip: tip} %>
     <% end %>
   </div>
 </div>

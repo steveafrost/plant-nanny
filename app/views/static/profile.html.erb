@@ -8,9 +8,6 @@
 <h4><i class="fa fa-plus"><%= link_to "Add a New Tip", new_tip_path %></i></h4>
 <ul style="list-style: none;">
   <% current_user.tips.each do |tip| %>
-      <blockquote>
-        <p><%= tip.content %></p>
-        <footer><%= tip.user.name || "Anonymous" %> • <%= link_to "#{time_ago_in_words(tip.created_at)} ago", plant_tip_path(tip.plant, tip) %></cite></footer>
-      </blockquote>
+      <%= render partial: 'tips/list_tips', locals: {tip: tip} %>
   <% end %>
 </ul>
