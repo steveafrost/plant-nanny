@@ -15,8 +15,9 @@ class PlantsController < ApplicationController
   end
 
   def create
-    @plant = Plant.new(plant_params)
-    @plant.tips.build(content: params[:plant][:tips_attributes])
+    @plant = current_user.plants.new(plant_params)
+    @plant.tips.first.user = current_user
+    @plant.tips.first.plant = @plant
     @plant.save
     redirect_to plant_path(@plant)
   end
@@ -36,7 +37,7 @@ class PlantsController < ApplicationController
   private
 
   def plant_params
-    params.require(:plant).permit(:id, :name, :difficulty, :amount_of_light, :amount_of_water, :frequency_of_water, :fun_fact, :tips_attributes => [:content]).merge(user_id: current_user.id)
+    params.require(:plant).permit(:id, :name, :difficulty, :amount_of_light, :amount_of_water, :frequency_of_water, :fun_fact, :tips_attributes => [:content])
   end
 
   def find_plant
