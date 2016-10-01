@@ -1,0 +1,8 @@
+<div class="card card-block">
+  <h4 class="card-title"><%= link_to plant.name, plant_path(plant) %></h4>
+  <p class="card-text"><%= plant.fun_fact %></p>
+  <i class="fa fa-info"></i>
+  <%= link_to "View Details", plant_path(plant) %>
+  <i class="fa fa-pencil-square-o text-xs-right"></i>
+  <%= link_to "Leave Tip", new_plant_tip_path(plant) %>
+</div>
