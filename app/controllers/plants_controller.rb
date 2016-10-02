@@ -15,7 +15,7 @@ class PlantsController < ApplicationController
   end
 
   def create
-    @plant = current_user.plants.new(plant_params)
+    @plant = Plant.where(:name => params[:plant][:name]).first_or_create(plant_params)
     @plant.tips.first.user = current_user
     @plant.tips.first.plant = @plant
     @plant.save
