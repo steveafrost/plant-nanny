@@ -10,4 +10,8 @@ class Plant < ApplicationRecord
   def self.random
     Plant.order("RANDOM()").limit(10)
   end
+
+  def abbreviation
+    truncate(self.fun_fact, :length => 25)
+  end
 end

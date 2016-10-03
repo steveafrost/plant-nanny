@@ -1,8 +1,12 @@
 <h4><i class="fa fa-plus"><%= link_to "Add a New Plant", new_plant_path %></i></h4>
 <ul style="list-style: none;">
-  <% current_user.plants.each do |plant| %>
-    <%= render partial: 'plants/list_plants', locals: {plant: plant} %>
-  <% end %>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <% current_user.plants.each do |plant| %>
+        <%= render partial: 'plants/list_plants', locals: {plant: plant} %>
+      <% end %>
+    </div>
+  </div>
 </ul>
 
 <!-- <h4><i class="fa fa-plus"><%= link_to "Add a New Tip", new_tip_path %></i></h4>
