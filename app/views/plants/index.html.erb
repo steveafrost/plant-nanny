@@ -1,7 +1,5 @@
 <div class="row">
   <% @plants.each do |plant| %>
-    <div class="col-sm-4">
       <%= render partial: 'plants/list_plants', locals: {plant: plant} %>
-    </div>
   <% end %>
 </div>

@@ -11,4 +11,12 @@ class Plant < ApplicationRecord
     Plant.order("RANDOM()").limit(10)
   end
 
+  # def tips_attributes=(attributes)
+  #   write_attribute(:content, attributes)
+  # end
+
+  # def tips_attributes
+  #   @tips
+  # end
+
 end
