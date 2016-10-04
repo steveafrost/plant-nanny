@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
-  has_many :tips
+  has_many :tips, :inverse_of => :user
   has_many :plants, :through => :tips
 
   def self.from_omniauth(auth)

@@ -15,7 +15,10 @@ class PlantsController < ApplicationController
   end
 
   def create
-    if @plant = Plant.find_by(:name => params[:plant][:name])
+    @plant = Plant.new(plant_params)
+    if !@plant.save
+      render :new
+    elsif @plant = Plant.find_by(:name => params[:plant][:name])
       flash[:notice] = "Plant already exists. Please add a tip to add this plant to your profile"
       redirect_to plant_path(@plant)
     else

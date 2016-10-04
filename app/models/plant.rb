@@ -1,5 +1,5 @@
 class Plant < ApplicationRecord
-  has_many :tips
+  has_many :tips, :inverse_of => :plant
   has_many :users, :through => :tips
 
   accepts_nested_attributes_for :tips
