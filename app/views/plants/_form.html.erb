@@ -1,5 +1,4 @@
 <div class="container col-md-8 col-md-offset-2">
-  <h2>Add a New Plant</h2>
 
   <%= form_for plant do |f| %>
 
@@ -44,10 +43,10 @@
     </div>
 
     <div class="form-group">
-    <%= f.fields_for :tips, plant.tips.build do |ff| %>
-      <%= ff.label :content, "Tip" %>
-      <%= ff.text_area :content, :class => "form-control" %>
-    <% end %>
+      <%= f.fields_for :tips, plant.tips.build do |ff| %>
+        <%= ff.label :content, "Tip" %>
+        <%= ff.text_area :content, :class => "form-control" %>
+      <% end %>
     </div>
 
     <%= f.submit :class => "btn btn-success" %>

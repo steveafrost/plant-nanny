@@ -15,11 +15,15 @@ class PlantsController < ApplicationController
   end
 
   def create
-    @plant = Plant.where(:name => params[:plant][:name]).first_or_create(plant_params)
-    @plant.tips.first.user = current_user
-    @plant.tips.first.plant = @plant
-    @plant.save
-    redirect_to plant_path(@plant)
+    if @plant = Plant.find_by(:name => params[:plant][:name])
+      redirect_to plant_path(@plant)
+    else
+      @plant = Plant.create(plant_params)
+      @plant.tips.last.user = current_user
+      @plant.tips.last.plant = @plant
+      @plant.save
+      redirect_to plant_path(@plant)
+    end
   end
 
   def show

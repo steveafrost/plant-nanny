@@ -1,42 +1,45 @@
 <div class="container">
   <div class="row">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h1><%= @plant.name %></h1>
-      </div>
-      <div class="panel-body">
-        <%= image_tag("random/#{rand(10)}.jpg", class: "img-responsive") %>
-      </div>
-      <div class="panel-heading">
-        <h4>Statistics</h4>
-      </div>
-      <div class="panel-body">
-        <div class="col-xs-3">
-          <i class="fa fa-line-chart big-icon"> <%= @plant.difficulty %></i>
+    <div class="col-md-10 col-md-offset-1">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1><%= @plant.name %></h1>
         </div>
-        <div class="col-xs-3">
-          <i class="fa fa-sun-o big-icon"> <%= @plant.amount_of_light %></i>
+        <div class="panel-body">
+          <%= image_tag("random/#{rand(10)}.jpg", class: "img-responsive") %>
         </div>
-        <div class="col-xs-3">
-          <i class="fa fa-tint big-icon"> <%= @plant.amount_of_water %></i>
+        <div class="panel-heading">
+          <h4>Statistics</h4>
         </div>
-        <div class="col-xs-3">
-          <i class="fa fa-clock-o big-icon"> <%= @plant.frequency_of_water %></i>
+        <div class="panel-body">
+          <div class="col-xs-3">
+            <i class="fa fa-line-chart big-icon"> <%= @plant.difficulty %></i>
+          </div>
+          <div class="col-xs-3">
+            <i class="fa fa-sun-o big-icon"> <%= @plant.amount_of_light %></i>
+          </div>
+          <div class="col-xs-3">
+            <i class="fa fa-tint big-icon"> <%= @plant.amount_of_water %></i>
+          </div>
+          <div class="col-xs-3">
+            <i class="fa fa-clock-o big-icon"> <%= @plant.frequency_of_water %></i>
+          </div>
         </div>
-      </div>
 
-      <div class="panel-heading">
-        <h4>Fun Fact</h4>
-      </div>
-      <div class="panel-body">
-        <%= @plant.fun_fact %>
+        <div class="panel-heading">
+          <h4>Fun Fact</h4>
+        </div>
+        <div class="panel-body">
+          <%= @plant.fun_fact %>
+        </div>
       </div>
     </div>
   </div>
-
   <div class="row">
-    <% @plant.tips.each do |tip| %>
-      <%= render partial: 'tips/list_tips', locals: {tip: tip} %>
-    <% end %>
+    <div class="col-md-10 col-md-offset-1">
+      <% @plant.tips.each do |tip| %>
+        <%= render partial: 'tips/list_tips', locals: {tip: tip} %>
+      <% end %>
+    </div>
   </div>
 </div>
