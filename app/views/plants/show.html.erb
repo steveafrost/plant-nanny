@@ -34,7 +34,7 @@
         </div>
 
         <div class="panel-heading">
-          <h4>Tips</h4>
+          <h4><i class="fa fa-pencil-square-o text-xs-right"></i> <%= link_to "Leave New Tip", new_plant_tip_path(@plant) %></h4>
         </div>
         <div class="panel-body">
           <% @plant.tips.each do |tip| %>
