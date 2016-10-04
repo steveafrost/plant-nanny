@@ -11,5 +11,4 @@ class Plant < ApplicationRecord
     Plant.order("RANDOM()").limit(10)
   end
 
-
 end

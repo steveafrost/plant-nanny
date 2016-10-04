@@ -1,55 +1,53 @@
-<div class="container col-md-8 col-md-offset-2">
+<%= form_for plant do |f| %>
 
-  <%= form_for plant do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, :class => "form-control"  %>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :name %>
-      <%= f.text_field :name, :class => "form-control"  %>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-3">
-        <div class="form-group">
-          <%= f.label :difficulty, " Difficulty", :class => "fa fa-line-chart" %>
-          <%= f.range_field :difficulty, :in => 1..5, :class => "form-control" %>
-        </div>
-      </div>
-
-      <div class="col-xs-3">
-        <div class="form-group">
-          <%= f.label :amount_of_light, " Amount", :class => "fa fa-sun-o" %>
-          <%= f.range_field :amount_of_light, :in => 1..5, :class => "form-control" %>
-        </div>
-      </div>
-
-      <div class="col-xs-3">
-        <div class="form-group">
-          <%= f.label :amount_of_water, " Amount", :class => "fa fa-tint" %>
-          <%= f.range_field :amount_of_water, :in => 1..5, :class => "form-control" %>
-        </div>
-      </div>
-
-      <div class="col-xs-3">
-        <div class="form-group">
-          <%= f.label :frequency_of_water, " Frequency", :class => "fa fa-tint" %>
-          <%= f.range_field :frequency_of_water, :in => 1..5, :class => "form-control" %>
-        </div>
+  <div class="row">
+    <div class="col-xs-3">
+      <div class="form-group">
+        <%= f.label :difficulty, " Difficulty", :class => "fa fa-line-chart" %>
+        <%= f.range_field :difficulty, :in => 1..5, :class => "form-control" %>
       </div>
     </div>
 
-    <div class="form-group">
-      <%= f.label :fun_fact %>
-      <%= f.text_area :fun_fact, :class => "form-control" %>
+    <div class="col-xs-3">
+      <div class="form-group">
+        <%= f.label :amount_of_light, " Amount", :class => "fa fa-sun-o" %>
+        <%= f.range_field :amount_of_light, :in => 1..5, :class => "form-control" %>
+      </div>
     </div>
 
-    <div class="form-group">
-      <%= f.fields_for :tips, plant.tips.build do |ff| %>
-        <%= ff.label :content, "Tip" %>
-        <%= ff.text_area :content, :class => "form-control" %>
-      <% end %>
+    <div class="col-xs-3">
+      <div class="form-group">
+        <%= f.label :amount_of_water, " Amount", :class => "fa fa-tint" %>
+        <%= f.range_field :amount_of_water, :in => 1..5, :class => "form-control" %>
+      </div>
     </div>
 
-    <%= f.submit :class => "btn btn-success" %>
+    <div class="col-xs-3">
+      <div class="form-group">
+        <%= f.label :frequency_of_water, " Frequency", :class => "fa fa-tint" %>
+        <%= f.range_field :frequency_of_water, :in => 1..5, :class => "form-control" %>
+      </div>
+    </div>
+  </div>
 
-  <% end %>
-</div>
+  <div class="form-group">
+    <%= f.label :fun_fact %>
+    <%= f.text_area :fun_fact, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.fields_for :tips, plant.tips.build do |ff| %>
+      <%= ff.label :content, "Tip" %>
+      <%= ff.text_area :content, :class => "form-control" %>
+    <% end %>
+  </div>
+
+  <%= f.submit :class => "btn btn-success" %>
+
+<% end %>
+

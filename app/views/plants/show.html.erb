@@ -32,14 +32,16 @@
         <div class="panel-body">
           <%= @plant.fun_fact %>
         </div>
+
+        <div class="panel-heading">
+          <h4>Tips</h4>
+        </div>
+        <div class="panel-body">
+          <% @plant.tips.each do |tip| %>
+            <%= render partial: 'tips/list_tips', locals: {tip: tip} %>
+          <% end %>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-      <% @plant.tips.each do |tip| %>
-        <%= render partial: 'tips/list_tips', locals: {tip: tip} %>
-      <% end %>
     </div>
   </div>
 </div>

@@ -16,6 +16,7 @@ class PlantsController < ApplicationController
 
   def create
     if @plant = Plant.find_by(:name => params[:plant][:name])
+      flash[:notice] = "Plant already exists. Please add a tip to add this plant to your profile"
       redirect_to plant_path(@plant)
     else
       @plant = Plant.create(plant_params)
