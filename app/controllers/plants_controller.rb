@@ -11,7 +11,7 @@ class PlantsController < ApplicationController
 
   def new
     @plant = Plant.new
-    @plant.tips.build
+    2.times { @plant.tips.build }
   end
 
   def create
