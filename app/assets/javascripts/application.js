@@ -26,5 +26,5 @@ $(function() {
             return $(".alert").fadeOut();
         };
     })(this));
-    return setTimeout(flashCallback, 5000);
+    return setTimeout(flashCallback, 3000);
 });

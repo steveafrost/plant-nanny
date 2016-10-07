@@ -11,8 +11,10 @@ class Plant < ApplicationRecord
 
   def tips_attributes=(attributes)
     attributes.values.each do |attribute|
-      tip = self.tips.build(attribute)
+      tip = Tip.new(attribute)
       tip.user = User.current
+      tip.plant = self
+      self.tips << tip
     end
   end
 end
