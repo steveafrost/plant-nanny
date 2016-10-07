@@ -7,6 +7,7 @@ class StaticController < ApplicationController
 
   def profile
     if current_user
+      @myplants = current_user.plants.uniq
       render :profile
     else
       flash[:alert] = "You must be logged in to view your plants"

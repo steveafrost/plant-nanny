@@ -8,6 +8,14 @@ class User < ApplicationRecord
   has_many :tips, :inverse_of => :user
   has_many :plants, :through => :tips
 
+  def self.current
+    Thread.current[:user]
+  end
+
+  def self.current=(user)
+    Thread.current[:user] = user
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
