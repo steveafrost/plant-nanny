@@ -14,11 +14,14 @@ class PlantsController < ApplicationController
   end
 
   def create
-    if existing_plant = Plant.find_by(name: params[:plant][:name])
+    @plant = Plant.new(plant_params)
+    if !@plant.valid?
+      render :new
+    elsif existing_plant = Plant.find_by(name: params[:plant][:name])
       existing_plant.tips_attributes=(params[:plant][:tips_attributes])
       redirect_to plant_path(existing_plant)
     else
-      new_plant = Plant.create(plant_params)
+      @plant.save
       redirect_to plant_path(new_plant)
     end
   end
