@@ -22,7 +22,7 @@ class PlantsController < ApplicationController
       redirect_to plant_path(existing_plant)
     else
       @plant.save
-      redirect_to plant_path(new_plant)
+      redirect_to plant_path(@plant)
     end
   end
 
