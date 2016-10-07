@@ -57,7 +57,7 @@
   </div>
 
   <div class="form-group">
-    <%= f.fields_for :tips do |ff| %>
+    <%= f.fields_for :tips, @plant.tips.build do |ff| %>
       <%= ff.label :content, "Tip" %>
       <%= ff.text_area :content, :class => "form-control" %>
     <% end %>

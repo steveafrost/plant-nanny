@@ -11,7 +11,6 @@ class PlantsController < ApplicationController
 
   def new
     @plant = Plant.new
-    2.times { @plant.tips.build }
   end
 
   def create
@@ -22,9 +21,6 @@ class PlantsController < ApplicationController
       flash[:notice] = "Plant already exists. Please add a tip to add this plant to your profile"
       redirect_to plant_path(@plant)
     else
-      @plant = Plant.create(plant_params)
-      @plant.tips.last.user = current_user
-      @plant.tips.last.plant = @plant
       @plant.save
       redirect_to plant_path(@plant)
     end
