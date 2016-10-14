@@ -13,4 +13,8 @@ class Plant < ApplicationRecord
       self.tips << tip
     end
   end
+
+  def self.difficulties
+    self.order(:difficulty)
+  end
 end
