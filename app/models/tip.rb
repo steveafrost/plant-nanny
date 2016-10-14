@@ -4,4 +4,7 @@ class Tip < ApplicationRecord
 
   validates :content, presence: true
 
+  def self.recent_activity
+    Tip.limit(10).order('id desc')
+  end
 end

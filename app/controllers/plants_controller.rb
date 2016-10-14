@@ -5,10 +5,6 @@ class PlantsController < ApplicationController
     @plants = Plant.all
   end
 
-  def random
-    @plants = Plant.random
-  end
-
   def new
     @plant = Plant.new
   end
