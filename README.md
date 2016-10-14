@@ -4,8 +4,7 @@ Plant Nanny helps with managing indoor plants. Some indoor plants require sunlig
 ## Getting Started
 
 ### Prerequisites
-* You must install [Rails](http://railsapps.github.io/installing-rails.html) & [Ruby](https://www.ruby-lang.org/en/documentation/installation/) on your system. See next bullet for version information.
-* This app was built w/ Rails 5.0.0 and Ruby v2.2.3. Ruby v2.3 has been tested and works as well.
+* You must install Bundler using the info [here](http://bundler.io/).
 
 ### Installation
 * Fork & clone repo
