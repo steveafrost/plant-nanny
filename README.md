@@ -1,15 +1,17 @@
 ![plant nanny logo](https://d3vv6lp55qjaqc.cloudfront.net/items/2f2Y3N2Q2G1Y450T373s/plantnannylogoforgithub.jpg)
-Plant Nanny was created to help people manage their indoor plants. After killing my plants each year, every year and countless trips to the greenhouse to replace said plants, I've realized that there should be a resource like Plant Nanny.
-
-Plant Nanny will allow you to create a profile, add plants to that profile, and also add tips to those plants that may help other users grow that same plant.
-
-Hope you enjoy it, and hope all your plants stay alive!
-
-* Built w/ Rails 5.0.0 and Ruby v2.2.3
+Plant Nanny helps with managing indoor plants. Some indoor plants require sunlight you may not have, watering you don't have time for, or difficulty you just plain don't care to challenge. Plant Nanny aims to weed out the hardest plants to grow indoors and provide grounds for users to leave tips about plants with which they've had success. (all puns intended)
 
 ## Getting Started
+
+### Prerequisites
+* You must install [Rails](http://railsapps.github.io/installing-rails.html) & [Ruby](https://www.ruby-lang.org/en/documentation/installation/) on your system. See next bullet for version information.
+* This app was built w/ Rails 5.0.0 and Ruby v2.2.3. Ruby v2.3 has been tested and works as well.
+
+### Installation
 * Fork & clone repo
 * Run `bundle install` in Terminal
+
+### Usage
 * Type `rails s` in Terminal to run Rails server
 * Visit `locahost:3000` in browser to interact with web app
 
