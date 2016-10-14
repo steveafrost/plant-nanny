@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/about', to: 'static#about'
   get '/profile', to: 'static#profile'
   get '/tips/new', to: 'tips#new', as: 'new_tip'
-  get '/plants/random', to: 'plants#random'
+  get '/tips/recent', to: 'tips#recent', as: 'recent_activity'
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }
 
