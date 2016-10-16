@@ -16,6 +16,7 @@ Plant Nanny helps with managing indoor plants. Some indoor plants require sunlig
 
 ## Contributing
 All code within pull requests should adhere to the [Rails Style Guide](https://github.com/bbatsov/rails-style-guide)
+
 Please ensure your pull request adheres to the following guidelines:
 * Search previous suggestions before making a new one
 * Suggested READMEs should be beautiful or stand out in some way.
