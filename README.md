@@ -14,6 +14,20 @@ Plant Nanny helps with managing indoor plants. Some indoor plants require sunlig
 * Type `rails s` in Terminal to run Rails server
 * Visit `locahost:3000` in browser to interact with web app
 
+## Contributing
+All code within pull requests should adhere to the [Rails Style Guide](https://github.com/bbatsov/rails-style-guide)
+Please ensure your pull request adheres to the following guidelines:
+* Search previous suggestions before making a new one
+* Suggested READMEs should be beautiful or stand out in some way.
+* Make an individual pull request for each suggestion.
+* New categories, or improvements to the existing categorization are welcome.
+* Keep descriptions short and simple, but descriptive.
+* Start the description with a capital and end with a full stop/period.
+* Check your spelling and grammar.
+* Make sure your text editor is set to remove trailing whitespace.
+
+Thank you for your suggestions!
+
 ## License
 
 MIT License | Copyright (c) 2016 [Steve Frost](http://steveafrost.com)
