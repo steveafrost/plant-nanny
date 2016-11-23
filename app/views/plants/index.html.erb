@@ -3,3 +3,17 @@
       <%= render partial: 'plants/list_plants', locals: {plant: plant} %>
   <% end %>
 </div>
+
+<script type="text/javascript">
+function attachListeners() {
+  $('.details').click(function(event) {
+    event.preventDefault();
+    var plantId = $(this).attr(data);
+    $('#overlay').show();
+  });
+}
+
+  $(function() {
+    attachListeners();
+  });
+</script>
