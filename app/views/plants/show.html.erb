@@ -1,11 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
-
       <div class="panel panel-default">
         <div class="panel-heading">
-          <button id="js-previous" class="btn btn-success">Previous</button>
-          <button id="js-next" class="btn btn-success">Next</button>
+          <button id="js-previous" class="btn btn-success" data-id="<%= @plant.id %>">Previous</button>
+          <button id="js-next" class="btn btn-success" data-id="<%= @plant.id %>">Next</button>
           <h1 id="plant-name"><%= @plant.name %></h1>
         </div>
         <div class="panel-body">
@@ -49,9 +48,9 @@
 
 <script type="text/javascript">
   $(function() {
-    $('#js-load-comments').click(function() {
-      var nextTip = 2;
-      $.get('/tips/' + nextTip + '.json', function(data) {
+    $('#js-next').click(function() {
+      var nextPlant = parseInt($('#js-next').attr('data-id')) + 1;
+      $.get('/plants/' + nextPlant + '.json', function(data) {
         debugger;
       });
     });
