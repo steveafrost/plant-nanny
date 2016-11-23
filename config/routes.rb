@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/profile', to: 'static#profile'
   get '/tips/new', to: 'tips#new', as: 'new_tip'
   get '/tips/recent', to: 'tips#recent', as: 'recent_activity'
+  get '/tips/:id', to: 'tips#show'
   get '/plants/groups', to: 'plants#groups'
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }

@@ -23,6 +23,10 @@ class PlantsController < ApplicationController
   end
 
   def show
+    respond_to do |f|
+      f.html {render :show}
+      f.json {render json: @plant}
+    end
   end
 
   def edit

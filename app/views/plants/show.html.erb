@@ -3,7 +3,9 @@
     <div class="col-md-10 col-md-offset-1">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h1><%= @plant.name %></h1>
+          <button id="js-previous" class="btn btn-success" data-id="<%= @plant.id %>">Previous</button>
+          <button id="js-next" class="btn btn-success" data-id="<%= @plant.id %>">Next</button>
+          <h1 id="plant-name"><%= @plant.name %></h1>
         </div>
         <div class="panel-body">
           <%= image_tag("random/#{rand(10)}.jpg", class: "img-responsive") %>
@@ -13,23 +15,23 @@
         </div>
         <div class="panel-body">
           <div class="col-xs-3">
-            <i class="fa fa-line-chart big-icon"> <%= @plant.difficulty %></i>
+            <i class="fa fa-line-chart big-icon"><%= @plant.difficulty %></i>
           </div>
           <div class="col-xs-3">
-            <i class="fa fa-sun-o big-icon"> <%= @plant.amount_of_light %></i>
+            <i class="fa fa-sun-o big-icon"><%= @plant.amount_of_light %></i>
           </div>
           <div class="col-xs-3">
-            <i class="fa fa-tint big-icon"> <%= @plant.amount_of_water %></i>
+            <i class="fa fa-tint big-icon"><%= @plant.amount_of_water %></i>
           </div>
           <div class="col-xs-3">
-            <i class="fa fa-clock-o big-icon"> <%= @plant.frequency_of_water %></i>
+            <i class="fa fa-clock-o big-icon"><%= @plant.frequency_of_water %></i>
           </div>
         </div>
 
         <div class="panel-heading">
           <h4>Fun Fact</h4>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" id="plant-fun-fact">
           <%= @plant.fun_fact %>
         </div>
 
@@ -37,11 +39,43 @@
           <h4><i class="fa fa-pencil-square-o text-xs-right"></i> <%= link_to "Leave New Tip", new_plant_tip_path(@plant) %></h4>
         </div>
         <div class="panel-body">
-          <% @plant.tips.each do |tip| %>
-            <%= render partial: 'tips/list_tips', locals: {tip: tip} %>
-          <% end %>
+          <%= render partial: 'tips/list_tips', locals: {tip: @plant.tips.first} %>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+
+  function attachListeners() {
+    $('#js-next').click(function() {
+      var nextPlant = parseInt($('#js-next').attr('data-id')) + 1;
+      $.get('/plants/' + nextPlant + '.json', function(data) {
+        updatePage(data);
+      });
+    });
+
+    $('#js-previous').click(function() {
+      var previousPlant = parseInt($('#js-previous').attr('data-id')) - 1;
+      $.get('/plants/' + previousPlant + '.json', function(data) {
+        updatePage(data);
+      });
+    });
+  }
+
+  function updatePage(data) {
+    $('#plant-name').text(data.name);
+    $('.fa-line-chart').text(data.difficulty);
+    $('.fa-sun-o').text(data.amount_of_light);
+    $('.fa-tint').text(data.amount_of_water);
+    $('.fa-clock-o').text(data.frequency_of_water);
+    $('#plant-fun-fact').text(data.fun_fact);
+    $('#js-next').attr('data-id', data.id);
+    $('#js-previous').attr('data-id', data.id);
+  }
+
+  $(function() {
+    attachListeners();
+  });
+</script>

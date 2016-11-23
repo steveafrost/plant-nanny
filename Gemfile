@@ -30,6 +30,9 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'font-awesome-sass', '~> 4.6.2'
 gem 'autoprefixer-rails'
 
+# Active Serializer to convert Ruby objects to JSON
+gem 'active_model_serializers'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

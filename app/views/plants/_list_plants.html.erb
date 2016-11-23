@@ -4,7 +4,7 @@
       <%= image_tag("random/#{rand(14)}.jpg", class: "img-responsive") %>
 
       <span class="card-title">
-      <%= link_to plant.name, plant_path(plant) %>
+        <h3><%= plant.name %></h3>
       </span>
     </div>
 
@@ -14,7 +14,7 @@
 
     <div class="card-action">
       <i class="fa fa-info"></i>
-      <%= link_to "View Details", plant_path(plant) %>
+      <%= link_to "View Details", plant_path(plant), data: plant.id, class: 'details' %>
       <i class="fa fa-pencil-square-o text-xs-right"></i>
       <%= link_to "Leave Tip", new_plant_tip_path(plant) %>
     </div>
