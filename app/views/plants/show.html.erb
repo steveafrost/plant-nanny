@@ -37,11 +37,22 @@
           <h4><i class="fa fa-pencil-square-o text-xs-right"></i> <%= link_to "Leave New Tip", new_plant_tip_path(@plant) %></h4>
         </div>
         <div class="panel-body">
-          <% @plant.tips.each do |tip| %>
-            <%= render partial: 'tips/list_tips', locals: {tip: tip} %>
-          <% end %>
+          <%= render partial: 'tips/list_tips', locals: {tip: @plant.tips.first} %>
+
+          <button id="js-load-comments" class="btn btn-success">Load More Comments</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(function() {
+    $('#js-load-comments').click(function() {
+      var nextTip = 2;
+      $.get('/tips/' + nextTip + '.json', function(data) {
+        debugger;
+      });
+    });
+  });
+</script>

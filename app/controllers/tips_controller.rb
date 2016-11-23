@@ -1,5 +1,5 @@
 class TipsController < ApplicationController
-  before_action :set_plant, except: [:recent]
+  before_action :set_plant, except: [:recent, :show]
 
   def new
     @tip = Tip.new
@@ -12,6 +12,10 @@ class TipsController < ApplicationController
 
   def show
     @tip = Tip.find(params[:id])
+    respond_to do |f|
+      f.html {render :show}
+      f.json {render json: @tip}
+    end
   end
 
   def recent
