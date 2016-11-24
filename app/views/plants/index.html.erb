@@ -1,14 +1,13 @@
 <div class="row">
 
-  <% @plants.each do |plant| %>
+<!--   <% @plants.each do |plant| %>
     <%= render partial: 'plants/list_plants', locals: {plant: plant} %>
-  <% end %>
+  <% end %> -->
 </div>
 
 
 
 <script type="text/javascript">
-var random = Math.floor(Math.random() * 14) + 1;
 
   function attachListeners() {
     // $('.details').click(function(event) {
@@ -28,6 +27,7 @@ var random = Math.floor(Math.random() * 14) + 1;
   }
 
   function assembleHTML(plantName, plantId) {
+    var random = Math.floor(Math.random() * 14) + 1;
     html = '<div class="col-sm-4">';
     html += '<div class="card">';
     html += '<div class="card-image">';
@@ -52,7 +52,10 @@ var random = Math.floor(Math.random() * 14) + 1;
 
   function loadInitialPlants() {
     $.get('/plants.json', function(response) {
-      console.log(response);
+      for (var i = 0; i < 6; i++) {
+        var plant = response[i];
+        assembleHTML(plant.name, plant.id);
+      }
     });
   }
 
@@ -60,6 +63,5 @@ var random = Math.floor(Math.random() * 14) + 1;
   $(function() {
     attachListeners();
     loadInitialPlants();
-    assembleHTML("Some Plant", 1);
   });
 </script>
