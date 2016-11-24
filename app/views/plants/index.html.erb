@@ -1,8 +1,11 @@
 <div class="row">
-  <% @plants.each do |plant| %>
+
+<!--   <% @plants.each do |plant| %>
       <%= render partial: 'plants/list_plants', locals: {plant: plant} %>
-  <% end %>
+  <% end %> -->
 </div>
+
+
 
 <script type="text/javascript">
   function attachListeners() {
@@ -21,10 +24,31 @@
   //     $(this).css('background', '');
   //   });
   // }
+  function assembleHTML(plantName, plantId) {
+    html = '<div class="col-sm-4">'
+    html += '<div class="card">'
+    html += '<div class="card-image">'
+    html += '<img src="random/#{rand(14)}.jpg" class="img-responsive">'
+
+    html += '<span class="card-title">'
+    html += `<h3>#{plantName}</h3>`
+    html += '</span>'
+    html += '</div>'
+
+    html += '<div class="card-action">'
+    html += '<i class="fa fa-info"></i>'
+    html += `<%= link_to "View Details", plant_path(#{plantId}, data: plant.id, class: 'details') %>`
+    html += '<i class="fa fa-pencil-square-o text-xs-right"></i>'
+    html += `<%= link_to "Leave Tip", new_plant_tip_path(#{plantId}) %>`
+    html += '</div>'
+    html += '</div>'
+    html += '</div>'
+  }
 
 
 
   $(function() {
     attachListeners();
+    loadInitialPlants();
   });
 </script>
