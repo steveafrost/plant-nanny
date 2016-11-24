@@ -5,13 +5,24 @@
 </div>
 
 <script type="text/javascript">
-function attachListeners() {
-  $('.details').click(function(event) {
-    event.preventDefault();
-    var plantId = $(this).attr(data);
-    $('#overlay').show();
-  });
-}
+  function attachListeners() {
+    $('.details').click(function(event) {
+      event.preventDefault();
+      var plantId = $(this).attr(data);
+      var overlay = $('<div id="overlay"> </div>');
+      overlay.appendTo(document.body);
+    });
+
+    $('.card-image').mouseover(function() {
+      $(this).css('background', 'rgba(0, 0, 0, 0.4)');
+    });
+
+    $('.card-image').mouseout(function() {
+      $(this).css('background', '');
+    });
+  }
+
+
 
   $(function() {
     attachListeners();
