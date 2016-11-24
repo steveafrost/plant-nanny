@@ -8,6 +8,8 @@
 
 
 <script type="text/javascript">
+var random = Math.floor(Math.random() * 14) + 1;
+
   function attachListeners() {
     // $('.details').click(function(event) {
     //   event.preventDefault();
@@ -29,22 +31,23 @@
     html = '<div class="col-sm-4">';
     html += '<div class="card">';
     html += '<div class="card-image">';
-    html += '<img src="random/#{rand(14)}.jpg" class="img-responsive">';
+    html += `<img src="/assets/random/${random}.jpg" class="img-responsive">`;
 
     html += '<span class="card-title">';
-    html += `<h3>#{plantName}</h3>`;
+    html += `<h3>${plantName}</h3>`;
     html += '</span>';
     html += '</div>';
 
     html += '<div class="card-action">';
     html += '<i class="fa fa-info"></i>';
 
-    html += `<a href="/plants/#{plantId}" class="details">View Details</a>`;
+    html += `<a href="/plants/${plantId}" class="details">View Details</a>`;
     html += '<i class="fa fa-pencil-square-o text-xs-right"></i>';
-    html += `<a href="/plants/#{plantId}/tips/new">Leave Tip</a>`;
+    html += `<a href="/plants/${plantId}/tips/new">Leave Tip</a>`;
     html += '</div>';
     html += '</div>';
     html += '</div>';
+    $('.row').append(html);
   }
 
   function loadInitialPlants() {
@@ -57,5 +60,6 @@
   $(function() {
     attachListeners();
     loadInitialPlants();
+    assembleHTML("Some Plant", 1);
   });
 </script>
