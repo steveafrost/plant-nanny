@@ -1,8 +1,8 @@
 <div class="row">
 
-<!--   <% @plants.each do |plant| %>
-      <%= render partial: 'plants/list_plants', locals: {plant: plant} %>
-  <% end %> -->
+  <% @plants.each do |plant| %>
+    <%= render partial: 'plants/list_plants', locals: {plant: plant} %>
+  <% end %>
 </div>
 
 
@@ -37,14 +37,20 @@
 
     html += '<div class="card-action">'
     html += '<i class="fa fa-info"></i>'
-    html += `<%= link_to "View Details", plant_path(#{plantId}, data: plant.id, class: 'details') %>`
+
+    html += `<a href="/plants/#{plantId}" class="details">View Details</a>`
     html += '<i class="fa fa-pencil-square-o text-xs-right"></i>'
-    html += `<%= link_to "Leave Tip", new_plant_tip_path(#{plantId}) %>`
+    html += `<a href="/plants/#{plantId}/tips/new">Leave Tip</a>`
     html += '</div>'
     html += '</div>'
     html += '</div>'
   }
 
+  function loadInitialPlants() {
+    $.get('/plants.json', function(response) {
+      console.log(response);
+    });
+  }
 
 
   $(function() {
