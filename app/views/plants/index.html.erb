@@ -4,29 +4,29 @@
   <button class="btn btn-success" id="js-more-plants">More Plants</button>
 </div>
 
+<%= render 'layouts/plant_details' %>
+
 
 <script type="text/javascript">
 
   function attachListeners() {
     $('#js-more-plants').click(loadPlants);
-    // $('.details').click(function(event) {
-    //   event.preventDefault();
-    //   var plantId = $(this).attr(data);
-    //   var overlay = $('<div id="overlay"> </div>');
-    //   overlay.appendTo(document.body);
-    // });
 
-    // $('.container-fluid').on('mouseover', '.card-image', function() {
-    //   $(this).css('background', 'rgba(0, 0, 0, 0.4)');
-    //   $('.card-title', this).toggle();
-    //   $('.card-title a', this).toggle();
-    // });
+    $('#plants').on('click', '.details', function(event) {
+      event.preventDefault();
+      var plantPath = $(this).attr('href');
+      var overlay = $('<div id="overlay"> </div>');
+      overlay.appendTo(document.body);
+      loadPlantDetails(plantPath);
+    });
 
-    // $('.container-fluid').on('mouseout', '.card-image', function() {
-    //   $(this).css('background', '');
-    //   $('.card-title', this).toggle();
-    //   $('.card-title a', this).toggle();
-    // });
+    $('#plants').on('mouseover', '.card-image', function() {
+      $(this).css('background', 'rgba(0, 0, 0, 0.4)');
+    });
+
+    $('#plants').on('mouseout', '.card-image', function() {
+      $(this).css('background', '');
+    });
   }
 
   function assembleHTML(plantName, plantId) {
@@ -60,6 +60,19 @@
         var plant = response[currentPlants];
         assembleHTML(plant.name, plant.id);
       }
+    });
+  }
+
+  function loadPlantDetails(plantPath) {
+    $.get(plantPath + '.json', function(response) {
+      $('#plant-name').text(response.name);
+      $('.fa-line-chart').text(response.difficulty);
+      $('.fa-sun-o').text(response.amount_of_light);
+      $('.fa-tint').text(response.amount_of_water);
+      $('.fa-clock-o').text(response.frequency_of_water);
+      $('#plant-fun-fact').text(response.fun_fact);
+      $('#js-next').attr('data-id', response.id);
+      $('#js-previous').attr('data-id', response.id);
     });
   }
 
