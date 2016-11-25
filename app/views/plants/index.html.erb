@@ -18,10 +18,14 @@
 
     $('.container-fluid').on('mouseover', '.card-image', function() {
       $(this).css('background', 'rgba(0, 0, 0, 0.4)');
+      $('.card-title', this).toggle();
+      $('.card-title a', this).toggle();
     });
 
     $('.container-fluid').on('mouseout', '.card-image', function() {
       $(this).css('background', '');
+      $('.card-title', this).toggle();
+      $('.card-title a', this).toggle();
     });
   }
 
