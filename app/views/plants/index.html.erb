@@ -27,6 +27,20 @@
     $('#plants').on('mouseout', '.card-image', function() {
       $(this).css('background', '');
     });
+
+    $('#plant-details').on('click', '#js-next', function() {
+      var nextPlant = parseInt($('#js-next').attr('data-id')) + 1;
+      $.get('/plants/' + nextPlant + '.json', function(data) {
+        updatePlantDetails(data);
+      });
+    });
+
+    $('#plant-details').on('click', '#js-previous', function() {
+      var previousPlant = parseInt($('#js-previous').attr('data-id')) - 1;
+      $.get('/plants/' + previousPlant + '.json', function(plantPath) {
+        updatePlantDetails(data);
+      });
+    });
   }
 
   function assembleHTML(plantName, plantId) {
@@ -64,7 +78,7 @@
   }
 
   function loadPlantDetails(plantPath) {
-    $('#plant-details').toggle();
+    $('#plant-details').toggle().fadeIn();
     $.get(plantPath + '.json', function(response) {
       $('#plant-name').text(response.name);
       $('.fa-line-chart').text(response.difficulty);
@@ -75,6 +89,17 @@
       $('#js-next').attr('data-id', response.id);
       $('#js-previous').attr('data-id', response.id);
     });
+  }
+
+  function updatePlantDetails(data) {
+    $('#plant-name').text(data.name);
+    $('.fa-line-chart').text(data.difficulty);
+    $('.fa-sun-o').text(data.amount_of_light);
+    $('.fa-tint').text(data.amount_of_water);
+    $('.fa-clock-o').text(data.frequency_of_water);
+    $('#plant-fun-fact').text(data.fun_fact);
+    $('#js-next').attr('data-id', data.id);
+    $('#js-previous').attr('data-id', data.id);
   }
 
   $(function() {
