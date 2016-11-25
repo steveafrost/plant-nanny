@@ -64,6 +64,7 @@
   }
 
   function loadPlantDetails(plantPath) {
+    $('#plant-details').toggle();
     $.get(plantPath + '.json', function(response) {
       $('#plant-name').text(response.name);
       $('.fa-line-chart').text(response.difficulty);
