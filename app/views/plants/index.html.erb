@@ -41,6 +41,13 @@
         updatePlantDetails(response);
       });
     });
+
+    $(document).click(function(e) {
+      if(!$("#js-next").is(e.target) && !$("#js-previous").is(e.target)) {
+        $("#plant-details").fadeOut("fast");
+        $("#overlay").fadeOut("fast");
+      }
+    });
   }
 
   function assembleHTML(plantName, plantId) {
