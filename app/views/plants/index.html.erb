@@ -30,15 +30,15 @@
 
     $('#plant-details').on('click', '#js-next', function() {
       var nextPlant = parseInt($('#js-next').attr('data-id')) + 1;
-      $.get('/plants/' + nextPlant + '.json', function(data) {
-        updatePlantDetails(data);
+      $.get('/plants/' + nextPlant + '.json', function(response) {
+        updatePlantDetails(response);
       });
     });
 
     $('#plant-details').on('click', '#js-previous', function() {
       var previousPlant = parseInt($('#js-previous').attr('data-id')) - 1;
-      $.get('/plants/' + previousPlant + '.json', function(plantPath) {
-        updatePlantDetails(data);
+      $.get('/plants/' + previousPlant + '.json', function(response) {
+        updatePlantDetails(response);
       });
     });
   }
