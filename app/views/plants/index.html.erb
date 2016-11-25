@@ -43,9 +43,9 @@
     });
 
     $(document).click(function(e) {
-      if(!$("#js-next").is(e.target) && !$("#js-previous").is(e.target)) {
-        $("#plant-details").fadeToggle(400);
-        $("#overlay").fadeToggle(400);
+      if(!$('#js-next').is(e.target) && !$('#js-previous').is(e.target) && !$('#js-more-plants')) {
+        $('#plant-details').fadeToggle(400);
+        $('#overlay').fadeToggle(400);
       }
     });
   }
