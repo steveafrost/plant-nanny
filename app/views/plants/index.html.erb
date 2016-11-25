@@ -16,11 +16,11 @@
     //   overlay.appendTo(document.body);
     // });
 
-    $('.card-image').mouseover(function() {
+    $('.container-fluid').on('mouseover', '.card-image', function() {
       $(this).css('background', 'rgba(0, 0, 0, 0.4)');
     });
 
-    $('.card-image').mouseout(function() {
+    $('.container-fluid').on('mouseout', '.card-image', function() {
       $(this).css('background', '');
     });
   }
