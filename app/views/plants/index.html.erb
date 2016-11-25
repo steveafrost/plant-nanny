@@ -16,7 +16,7 @@
       var plantPath = $(this).attr('href');
       event.preventDefault();
       event.stopPropagation();
-      $('#overlay').fadeToggle(500);
+      $('#overlay').fadeToggle(400);
       loadPlantDetails(plantPath);
     });
 
@@ -44,8 +44,8 @@
 
     $(document).click(function(e) {
       if(!$("#js-next").is(e.target) && !$("#js-previous").is(e.target)) {
-        $("#plant-details").fadeOut("fast");
-        $("#overlay").fadeOut("fast");
+        $("#plant-details").fadeToggle(400);
+        $("#overlay").fadeToggle(400);
       }
     });
   }
@@ -85,7 +85,7 @@
   }
 
   function loadPlantDetails(plantPath) {
-    $('#plant-details').fadeIn();
+    $('#plant-details').fadeToggle(400)
     $.get(plantPath + '.json', function(response) {
       $('#plant-name').text(response.name);
       $('.fa-line-chart').text(response.difficulty);
