@@ -98,6 +98,7 @@
       $('#plant-fun-fact').text(response.fun_fact);
       $('#js-next').attr('data-id', response.id);
       $('#js-previous').attr('data-id', response.id);
+      loadTips(response);
     });
   }
 
@@ -110,6 +111,21 @@
     $('#plant-fun-fact').text(data.fun_fact);
     $('#js-next').attr('data-id', data.id);
     $('#js-previous').attr('data-id', data.id);
+    loadTips(data);
+  }
+
+  function loadTips(plantJSON) {
+    $.each(plantJSON.tips, function(index, tip) {
+      $('#plant-tips').append(assembleTipsHTML(tip));
+    });
+  }
+
+  function assembleTipsHTML(tip) {
+    html = '<blockquote>';
+    html += `<p>${tip.content}</p>`;
+    html += `<footer><cite>${tip.username} • ${tip.created_at}</cite></footer>`;
+    html += '</blockquote>';
+    return html;
   }
 
   $(function() {
