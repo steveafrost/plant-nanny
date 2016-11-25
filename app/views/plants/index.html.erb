@@ -16,13 +16,13 @@
     //   overlay.appendTo(document.body);
     // });
 
-  //   $('.card-image').mouseover(function() {
-  //     $(this).css('background', 'rgba(0, 0, 0, 0.4)');
-  //   });
+    $('.card-image').mouseover(function() {
+      $(this).css('background', 'rgba(0, 0, 0, 0.4)');
+    });
 
-  //   $('.card-image').mouseout(function() {
-  //     $(this).css('background', '');
-  //   });
+    $('.card-image').mouseout(function() {
+      $(this).css('background', '');
+    });
   }
 
   function assembleHTML(plantName, plantId) {
@@ -34,15 +34,13 @@
 
     html += '<span class="card-title">';
     html += `<h3>${plantName}</h3>`;
-    html += '</span>';
-    html += '</div>';
 
-    html += '<div class="card-action">';
     html += '<i class="fa fa-info"></i>';
-
     html += `<a href="/plants/${plantId}" class="details">View Details</a>`;
     html += '<i class="fa fa-pencil-square-o text-xs-right"></i>';
     html += `<a href="/plants/${plantId}/tips/new">Leave Tip</a>`;
+
+    html += '</span>';
     html += '</div>';
     html += '</div>';
     html += '</div>';
