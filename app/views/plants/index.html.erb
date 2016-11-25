@@ -8,6 +8,7 @@
 <script type="text/javascript">
 
   function attachListeners() {
+    $('#js-more-plants').click(loadPlants);
     // $('.details').click(function(event) {
     //   event.preventDefault();
     //   var plantId = $(this).attr(data);
@@ -62,6 +63,6 @@
 
   $(function() {
     attachListeners();
-    loadPlants(0);
+    loadPlants();
   });
 </script>
