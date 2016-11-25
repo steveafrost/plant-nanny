@@ -3,7 +3,7 @@
 <div class="row" id="button">
   <button class="btn btn-success" id="js-more-plants">More Plants</button>
 </div>
-
+<div id="overlay"></div>
 <%= render 'layouts/plant_details' %>
 
 
@@ -13,10 +13,10 @@
     $('#js-more-plants').click(loadPlants);
 
     $('#plants').on('click', '.details', function(event) {
-      event.preventDefault();
       var plantPath = $(this).attr('href');
-      var overlay = $('<div id="overlay"> </div>');
-      overlay.appendTo(document.body);
+      event.preventDefault();
+      event.stopPropagation();
+      $('#overlay').fadeToggle(500);
       loadPlantDetails(plantPath);
     });
 
@@ -78,7 +78,7 @@
   }
 
   function loadPlantDetails(plantPath) {
-    $('#plant-details').toggle().fadeIn();
+    $('#plant-details').fadeIn();
     $.get(plantPath + '.json', function(response) {
       $('#plant-name').text(response.name);
       $('.fa-line-chart').text(response.difficulty);
