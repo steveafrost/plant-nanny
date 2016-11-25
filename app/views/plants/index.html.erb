@@ -42,11 +42,9 @@
       });
     });
 
-    $(document).click(function(e) {
-      if(!$('#js-next').is(e.target) && !$('#js-previous').is(e.target) && !$('#js-more-plants')) {
-        $('#plant-details').fadeToggle(400);
-        $('#overlay').fadeToggle(400);
-      }
+    $('#overlay').click(function() {
+      $('#plant-details').fadeToggle(400);
+      $('#overlay').fadeToggle(400);
     });
   }
 
