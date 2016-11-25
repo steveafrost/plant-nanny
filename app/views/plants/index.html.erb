@@ -124,7 +124,6 @@
   function assembleTipsHTML(tip) {
     html = '<blockquote>';
     html += `<p>${tip.content}</p>`;
-    html += `<footer><cite>${tip.username} • ${tip.created_at}</cite></footer>`;
     html += '</blockquote>';
     return html;
   }
