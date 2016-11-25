@@ -1,11 +1,12 @@
 <div class="row" id="plants">
 </div>
 <div class="row" id="button">
-  <button class="btn btn-success">More Plants</button>
+  <button class="btn btn-success" id="js-more-plants">More Plants</button>
 </div>
 
 
 <script type="text/javascript">
+
   function attachListeners() {
     // $('.details').click(function(event) {
     //   event.preventDefault();
@@ -47,10 +48,13 @@
     $('#plants').append(html);
   }
 
-  function loadInitialPlants() {
+  function loadPlants() {
+    var currentPlants = $('.card').length;
+    var endLoad = currentPlants + 6;
+
     $.get('/plants.json', function(response) {
-      for (var i = 0; i < 6; i++) {
-        var plant = response[i];
+      for (currentPlants; currentPlants < endLoad; currentPlants++) {
+        var plant = response[currentPlants];
         assembleHTML(plant.name, plant.id);
       }
     });
@@ -58,6 +62,6 @@
 
   $(function() {
     attachListeners();
-    loadInitialPlants();
+    loadPlants(0);
   });
 </script>
