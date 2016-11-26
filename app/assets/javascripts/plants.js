@@ -37,8 +37,8 @@ class Plant {
     $('.fa-tint').text(this.amount_of_water);
     $('.fa-clock-o').text(this.frequency_of_water);
     $('#plant-fun-fact').text(this.fun_fact);
-    $('#js-next').attr('data-id', this.id);
-    $('#js-previous').attr('data-id', this.id);
+    $('#js-next').attr('data-id', this.id + 1);
+    $('#js-previous').attr('data-id', this.id - 1);
   }
 }
 
@@ -64,14 +64,6 @@ function loadPlantDetails(clickedPlant) {
   });
 }
 
-function updatePlantDetails(clickedPlant) {
-  var plant = clickedPlant;
-  var plant_obj = new Plant(plant.id, plant.name, plant.difficulty, plant.amount_of_light, plant.amount_of_water, plant.frequency_of_water, plant.fun_fact);
-  plant_obj.createDetail();
-  loadTips(plant);
-}
-
-
 function attachListeners() {
   $('#js-more-plants').click(loadPlantCards);
 
@@ -92,18 +84,18 @@ function attachListeners() {
   });
 
   $('#plant-details').on('click', '#js-next', function() {
-    var nextPlant = parseInt($('#js-next').attr('data-id')) + 1;
+    var nextPlant = $('#js-next').attr('data-id');
     $.get('/plants/' + nextPlant + '.json', function(plant) {
       var plant_obj = new Plant(plant.id, plant.name, plant.difficulty, plant.amount_of_light, plant.amount_of_water, plant.frequency_of_water, plant.fun_fact);
-      updatePlantDetails(plant);
+      plant_obj.createDetail();
     });
   });
 
   $('#plant-details').on('click', '#js-previous', function() {
-    var previousPlant = parseInt($('#js-previous').attr('data-id')) - 1;
+    var previousPlant = $('#js-previous').attr('data-id');
     $.get('/plants/' + previousPlant + '.json', function(plant) {
       var plant_obj = new Plant(plant.id, plant.name, plant.difficulty, plant.amount_of_light, plant.amount_of_water, plant.frequency_of_water, plant.fun_fact);
-      updatePlantDetails(plant);
+      plant_obj.createDetail();
     });
   });
 
