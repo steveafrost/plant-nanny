@@ -30,8 +30,15 @@ class Plant {
     return html;
   }
 
-  plantDetails() {
-
+  plantDetail() {
+    $('#plant-name').text(this.name);
+    $('.fa-line-chart').text(this.difficulty);
+    $('.fa-sun-o').text(this.amount_of_light);
+    $('.fa-tint').text(this.amount_of_water);
+    $('.fa-clock-o').text(this.frequency_of_water);
+    $('#plant-fun-fact').text(this.fun_fact);
+    $('#js-next').attr('data-id', this.id);
+    $('#js-previous').attr('data-id', this.id);
   }
 }
 
@@ -48,17 +55,12 @@ function loadPlantCards() {
   });
 }
 
-function loadPlantDetails(plantPath) {
+function loadPlantDetails(clickedPlant) {
   $('#plant-details').fadeToggle(400);
-  $.get(plantPath + '.json', function(response) {
-    $('#plant-name').text(response.name);
-    $('.fa-line-chart').text(response.difficulty);
-    $('.fa-sun-o').text(response.amount_of_light);
-    $('.fa-tint').text(response.amount_of_water);
-    $('.fa-clock-o').text(response.frequency_of_water);
-    $('#plant-fun-fact').text(response.fun_fact);
-    $('#js-next').attr('data-id', response.id);
-    $('#js-previous').attr('data-id', response.id);
+  $.get(clickedPlant + '.json', function(response) {
+    var plant = response;
+    var plant_obj = new Plant(plant.id, plant.name, plant.difficulty, plant.amount_of_light, plant.amount_of_water, plant.frequency_of_water, plant.fun_fact);
+    plant_obj.plantDetail();
     loadTips(response);
   });
 }
