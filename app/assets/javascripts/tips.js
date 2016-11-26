@@ -10,6 +10,7 @@ class Tip {
     html += '</blockquote>';
     return html;
   }
+
 }
 
 function loadTips(plantTips) {
@@ -17,5 +18,12 @@ function loadTips(plantTips) {
   $.each(plantTips, function(index, tip) {
     var tip_obj = new Tip(tip.content, tip.created_at);
     $('#plant-tips').append(tip_obj.createTip());
+  });
+}
+
+function loadTipDetails(clickedPlant) {
+  $.get(clickedPlant + '.json', function(response) {
+    var tips = response.tips;
+    loadTips(tips);
   });
 }

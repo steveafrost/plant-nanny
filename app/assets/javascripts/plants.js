@@ -26,7 +26,7 @@ class Plant {
     html += '<i class="fa fa-info"></i>';
     html += `<a href="/plants/${this.id}" class="plant-details">View Details</a>`;
     html += '<i class="fa fa-pencil-square-o text-xs-right"></i>';
-    html += `<a href="/plants/${this.id}/tips/new" class="tip-details">Leave Tip</a>`;
+    html += `<a href="/plants/${this.id}" class="tip-details">Leave Tip</a>`;
     html += '</span></div></div></div>';
     return html;
   }
@@ -81,7 +81,7 @@ function attachListeners() {
     event.stopPropagation();
     $('#overlay').fadeIn(400);
     $('#tip-details').fadeIn(400);
-    loadPlantDetails($(this).attr('href'));
+    loadTipDetails($(this).attr('href'));
   });
 
   $('#plants').on('mouseover', '.card-image', function() {
@@ -110,6 +110,7 @@ function attachListeners() {
 
   $('#overlay').on('click', function() {
     $('#plant-details').fadeOut(400);
+    $('#tip-details').fadeOut(400);
     $('#overlay').fadeOut(400);
   });
 }
