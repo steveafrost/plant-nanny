@@ -40,6 +40,7 @@ class Plant {
     $('#plant-fun-fact').text(this.fun_fact);
     $('#js-next').attr('data-id', this.id + 1);
     $('#js-previous').attr('data-id', this.id - 1);
+    loadTips(this.tips)
   }
 }
 
@@ -61,7 +62,6 @@ function loadPlantDetails(clickedPlant) {
     var plant = response;
     var plant_obj = new Plant(plant.id, plant.name, plant.difficulty, plant.amount_of_light, plant.amount_of_water, plant.frequency_of_water, plant.fun_fact, plant.tips);
     plant_obj.createDetail();
-    loadTips(plant);
   });
 }
 

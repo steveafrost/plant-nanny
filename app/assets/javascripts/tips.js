@@ -13,9 +13,8 @@ class Tip {
 }
 
 function loadTips(plantTips) {
-  debugger
   $('#plant-tips').empty();
-  $.each(plantTips.tips, function(index, tip) {
+  $.each(plantTips, function(index, tip) {
     var tip_obj = new Tip(tip.content, tip.created_at);
     $('#plant-tips').append(tip_obj.createTip());
   });
