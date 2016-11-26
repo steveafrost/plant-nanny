@@ -76,12 +76,11 @@ function attachListeners() {
   $('#js-more-plants').click(loadPlantCards);
 
   $('#plants').on('click', '.details', function(event) {
-    var plantPath = $(this).attr('href');
     event.preventDefault();
     event.stopPropagation();
-    $('#overlay').fadeToggle(400);
-    $('#plant-details').fadeToggle(400);
-    loadPlantDetails(plantPath);
+    $('#overlay').fadeIn(400);
+    $('#plant-details').fadeIn(400);
+    loadPlantDetails($(this).attr('href'));
   });
 
   $('#plants').on('mouseover', '.card-image', function() {
