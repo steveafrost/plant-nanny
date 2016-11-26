@@ -19,41 +19,30 @@ class Plant {
   }
 
   plantCard() {
-    var html = '';
-    html += '<div class="col-sm-4"><div class="card">';
-
-    html += '<div class="card-image">';
+    var html = '<div class="col-sm-4"><div class="card"><div class="card-image">';
     html += `<img src="${this.randomPhoto()}" class="img-responsive">`;
-
-    html += '<span class="card-title">';
-    html += `<h3>${this.name}</h3>`;
-
+    html += `<span class="card-title"><h3>${this.name}</h3>`;
     html += '<i class="fa fa-info"></i>';
     html += `<a href="/plants/${this.id}" class="details">View Details</a>`;
     html += '<i class="fa fa-pencil-square-o text-xs-right"></i>';
     html += `<a href="/plants/${this.id}/tips/new">Leave Tip</a>`;
-
     html += '</span></div></div></div>';
     return html;
   }
+
+  plantDetails() {
+
+  }
 }
 
-function loadPlants() {
+function loadPlantCards() {
   var currentPlants = $('.card').length;
   var endLoad = currentPlants + 6;
 
   $.get('/plants.json', function(response) {
     for (currentPlants; currentPlants < endLoad; currentPlants++) {
       var plant = response[currentPlants];
-      var plant_obj = new Plant(
-        plant.id,
-        plant.name,
-        plant.difficulty,
-        plant.amount_of_light,
-        plant.amount_of_water,
-        plant.frequency_of_water,
-        plant.fun_fact
-      );
+      var plant_obj = new Plant(plant.id, plant.name, plant.difficulty, plant.amount_of_light, plant.amount_of_water, plant.frequency_of_water, plant.fun_fact);
       $('#plants').append(plant_obj.plantCard());
     }
   });
@@ -88,7 +77,7 @@ function updatePlantDetails(data) {
 
 
 function attachListeners() {
-  $('#js-more-plants').click(loadPlants);
+  $('#js-more-plants').click(loadPlantCards);
 
   $('#plants').on('click', '.details', function(event) {
     var plantPath = $(this).attr('href');
@@ -136,5 +125,5 @@ function attachListeners() {
 
 $(function() {
   attachListeners();
-  loadPlants();
+  loadPlantCards();
 });
