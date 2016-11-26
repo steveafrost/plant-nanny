@@ -24,9 +24,9 @@ class Plant {
     html += `<img src="${this.randomPhoto()}" class="img-responsive">`;
     html += `<span class="card-title"><h3>${this.name} • ${this.plantScore()}</h3>`;
     html += '<i class="fa fa-info"></i>';
-    html += `<a href="/plants/${this.id}" class="details">View Details</a>`;
+    html += `<a href="/plants/${this.id}" class="plant-details">View Details</a>`;
     html += '<i class="fa fa-pencil-square-o text-xs-right"></i>';
-    html += `<a href="/plants/${this.id}/tips/new">Leave Tip</a>`;
+    html += `<a href="/plants/${this.id}/tips/new" class="tip-details">Leave Tip</a>`;
     html += '</span></div></div></div>';
     return html;
   }
@@ -40,7 +40,7 @@ class Plant {
     $('#plant-fun-fact').text(this.fun_fact);
     $('#js-next').attr('data-id', this.id + 1);
     $('#js-previous').attr('data-id', this.id - 1);
-    loadTips(this.tips)
+    loadTips(this.tips);
   }
 }
 
@@ -68,11 +68,19 @@ function loadPlantDetails(clickedPlant) {
 function attachListeners() {
   $('#js-more-plants').click(loadPlantCards);
 
-  $('#plants').on('click', '.details', function(event) {
+  $('#plants').on('click', '.plant-details', function(event) {
     event.preventDefault();
     event.stopPropagation();
     $('#overlay').fadeIn(400);
     $('#plant-details').fadeIn(400);
+    loadPlantDetails($(this).attr('href'));
+  });
+
+  $('#plants').on('click', '.tip-details', function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    $('#overlay').fadeIn(400);
+    $('#tip-details').fadeIn(400);
     loadPlantDetails($(this).attr('href'));
   });
 
