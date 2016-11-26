@@ -105,14 +105,9 @@ function attachListeners() {
     });
   });
 
-  $('#plant-details').on('click', '#js-view-tips', function() {
-    var plantId = $(this).attr('data-id');
-    loadTips(plantId);
-  });
-
   $('#overlay').on('click', function() {
-    $('#plant-details').fadeToggle(400);
-    $('#overlay').fadeToggle(400);
+    $('#plant-details').fadeOut(400);
+    $('#overlay').fadeOut(400);
   });
 }
 
