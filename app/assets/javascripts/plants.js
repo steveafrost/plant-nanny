@@ -1,12 +1,23 @@
-var Plant = function(id, name, difficulty, a_of_l, a_of_w, f_of_w, fun_fact) {
-  this.id = id;
-  this.name = name;
-  this.difficulty = difficulty;
-  this.amount_of_light = a_of_l;
-  this.amount_of_water = a_of_w;
-  this.frequency_of_water = f_of_w;
-  this.fun_fact = fun_fact;
-};
+class Plant {
+  constructor(id, name, difficulty, a_of_l, a_of_w, f_of_w, fun_fact) {
+    this.id = id;
+    this.name = name;
+    this.difficulty = difficulty;
+    this.amount_of_light = a_of_l;
+    this.amount_of_water = a_of_w;
+    this.frequency_of_water = f_of_w;
+    this.fun_fact = fun_fact;
+  }
+
+  randomPhoto() {
+    random_num = Math.floor(Math.random() * 14) + 1;
+    return "/assets/random/${random_num}.jpg";
+  }
+
+  plantScore() {
+    return this.difficulty * this.amount_of_water * this.frequency_of_water * amount_of_light / 10;
+  }
+}
 
 
 function assembleDetailsHTML(plantName, plantId) {
@@ -38,7 +49,16 @@ function loadPlants() {
   $.get('/plants.json', function(response) {
     for (currentPlants; currentPlants < endLoad; currentPlants++) {
       var plant = response[currentPlants];
-      assembleDetailsHTML(plant.name, plant.id);
+      var plant_obj = new Plant(
+        plant.id,
+        plant.name,
+        plant.difficulty,
+        plant.amount_of_light,
+        plant.amount_of_water,
+        plant.frequency_of_water,
+        plant.fun_fact
+      );
+      assembleDetailsHTML(plant_obj.name, plant_obj.id);
     }
   });
 }

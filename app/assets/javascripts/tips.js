@@ -1,5 +1,7 @@
 var Tip = function(content) {
   this.content = content;
+
+
 };
 
 function loadTips(plantJSON) {
