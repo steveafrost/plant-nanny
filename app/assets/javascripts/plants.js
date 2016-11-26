@@ -1,5 +1,5 @@
 class Plant {
-  constructor(id, name, difficulty, a_of_l, a_of_w, f_of_w, fun_fact) {
+  constructor(id, name, difficulty, a_of_l, a_of_w, f_of_w, fun_fact, tips) {
     this.id = id;
     this.name = name;
     this.difficulty = difficulty;
@@ -7,6 +7,7 @@ class Plant {
     this.amount_of_water = a_of_w;
     this.frequency_of_water = f_of_w;
     this.fun_fact = fun_fact;
+    this.tips = tips;
   }
 
   randomPhoto() {
@@ -58,7 +59,7 @@ function loadPlantCards() {
 function loadPlantDetails(clickedPlant) {
   $.get(clickedPlant + '.json', function(response) {
     var plant = response;
-    var plant_obj = new Plant(plant.id, plant.name, plant.difficulty, plant.amount_of_light, plant.amount_of_water, plant.frequency_of_water, plant.fun_fact);
+    var plant_obj = new Plant(plant.id, plant.name, plant.difficulty, plant.amount_of_light, plant.amount_of_water, plant.frequency_of_water, plant.fun_fact, plant.tips);
     plant_obj.createDetail();
     loadTips(plant);
   });
@@ -86,7 +87,7 @@ function attachListeners() {
   $('#plant-details').on('click', '#js-next', function() {
     var nextPlant = $('#js-next').attr('data-id');
     $.get('/plants/' + nextPlant + '.json', function(plant) {
-      var plant_obj = new Plant(plant.id, plant.name, plant.difficulty, plant.amount_of_light, plant.amount_of_water, plant.frequency_of_water, plant.fun_fact);
+      var plant_obj = new Plant(plant.id, plant.name, plant.difficulty, plant.amount_of_light, plant.amount_of_water, plant.frequency_of_water, plant.fun_fact, plant.tips);
       plant_obj.createDetail();
     });
   });
@@ -94,7 +95,7 @@ function attachListeners() {
   $('#plant-details').on('click', '#js-previous', function() {
     var previousPlant = $('#js-previous').attr('data-id');
     $.get('/plants/' + previousPlant + '.json', function(plant) {
-      var plant_obj = new Plant(plant.id, plant.name, plant.difficulty, plant.amount_of_light, plant.amount_of_water, plant.frequency_of_water, plant.fun_fact);
+      var plant_obj = new Plant(plant.id, plant.name, plant.difficulty, plant.amount_of_light, plant.amount_of_water, plant.frequency_of_water, plant.fun_fact, plant.tips);
       plant_obj.createDetail();
     });
   });
