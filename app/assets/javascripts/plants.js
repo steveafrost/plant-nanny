@@ -18,7 +18,7 @@ class Plant {
     return this.difficulty * this.amount_of_water * this.frequency_of_water * amount_of_light / 10;
   }
 
-  plantCard() {
+  createCard() {
     var html = '<div class="col-sm-4"><div class="card"><div class="card-image">';
     html += `<img src="${this.randomPhoto()}" class="img-responsive">`;
     html += `<span class="card-title"><h3>${this.name}</h3>`;
@@ -30,7 +30,7 @@ class Plant {
     return html;
   }
 
-  plantDetail() {
+  createDetail() {
     $('#plant-name').text(this.name);
     $('.fa-line-chart').text(this.difficulty);
     $('.fa-sun-o').text(this.amount_of_light);
@@ -50,31 +50,25 @@ function loadPlantCards() {
     for (currentPlants; currentPlants < endLoad; currentPlants++) {
       var plant = response[currentPlants];
       var plant_obj = new Plant(plant.id, plant.name, plant.difficulty, plant.amount_of_light, plant.amount_of_water, plant.frequency_of_water, plant.fun_fact);
-      $('#plants').append(plant_obj.plantCard());
+      $('#plants').append(plant_obj.createCard());
     }
   });
 }
 
 function loadPlantDetails(clickedPlant) {
-  $('#plant-details').fadeToggle(400);
   $.get(clickedPlant + '.json', function(response) {
     var plant = response;
     var plant_obj = new Plant(plant.id, plant.name, plant.difficulty, plant.amount_of_light, plant.amount_of_water, plant.frequency_of_water, plant.fun_fact);
-    plant_obj.plantDetail();
-    loadTips(response);
+    plant_obj.createDetail();
+    loadTips(plant);
   });
 }
 
-function updatePlantDetails(data) {
-  $('#plant-name').text(data.name);
-  $('.fa-line-chart').text(data.difficulty);
-  $('.fa-sun-o').text(data.amount_of_light);
-  $('.fa-tint').text(data.amount_of_water);
-  $('.fa-clock-o').text(data.frequency_of_water);
-  $('#plant-fun-fact').text(data.fun_fact);
-  $('#js-next').attr('data-id', data.id);
-  $('#js-previous').attr('data-id', data.id);
-  loadTips(data);
+function updatePlantDetails(clickedPlant) {
+  var plant = clickedPlant;
+  var plant_obj = new Plant(plant.id, plant.name, plant.difficulty, plant.amount_of_light, plant.amount_of_water, plant.frequency_of_water, plant.fun_fact);
+  plant_obj.createDetail();
+  loadTips(plant);
 }
 
 
@@ -86,6 +80,7 @@ function attachListeners() {
     event.preventDefault();
     event.stopPropagation();
     $('#overlay').fadeToggle(400);
+    $('#plant-details').fadeToggle(400);
     loadPlantDetails(plantPath);
   });
 
