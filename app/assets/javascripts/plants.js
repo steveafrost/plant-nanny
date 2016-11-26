@@ -15,13 +15,13 @@ class Plant {
   }
 
   plantScore() {
-    return this.difficulty * this.amount_of_water * this.frequency_of_water * amount_of_light / 10;
+    return this.difficulty * this.amount_of_water * this.frequency_of_water * this.amount_of_light / 10;
   }
 
   createCard() {
     var html = '<div class="col-sm-4"><div class="card"><div class="card-image">';
     html += `<img src="${this.randomPhoto()}" class="img-responsive">`;
-    html += `<span class="card-title"><h3>${this.name}</h3>`;
+    html += `<span class="card-title"><h3>${this.name} • ${this.plantScore()}</h3>`;
     html += '<i class="fa fa-info"></i>';
     html += `<a href="/plants/${this.id}" class="details">View Details</a>`;
     html += '<i class="fa fa-pencil-square-o text-xs-right"></i>';
@@ -93,15 +93,17 @@ function attachListeners() {
 
   $('#plant-details').on('click', '#js-next', function() {
     var nextPlant = parseInt($('#js-next').attr('data-id')) + 1;
-    $.get('/plants/' + nextPlant + '.json', function(response) {
-      updatePlantDetails(response);
+    $.get('/plants/' + nextPlant + '.json', function(plant) {
+      var plant_obj = new Plant(plant.id, plant.name, plant.difficulty, plant.amount_of_light, plant.amount_of_water, plant.frequency_of_water, plant.fun_fact);
+      updatePlantDetails(plant);
     });
   });
 
   $('#plant-details').on('click', '#js-previous', function() {
     var previousPlant = parseInt($('#js-previous').attr('data-id')) - 1;
-    $.get('/plants/' + previousPlant + '.json', function(response) {
-      updatePlantDetails(response);
+    $.get('/plants/' + previousPlant + '.json', function(plant) {
+      var plant_obj = new Plant(plant.id, plant.name, plant.difficulty, plant.amount_of_light, plant.amount_of_water, plant.frequency_of_water, plant.fun_fact);
+      updatePlantDetails(plant);
     });
   });
 
