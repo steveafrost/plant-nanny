@@ -10,36 +10,32 @@ class Plant {
   }
 
   randomPhoto() {
-    random_num = Math.floor(Math.random() * 14) + 1;
-    return "/assets/random/${random_num}.jpg";
+    var random_num = Math.floor(Math.random() * 14) + 1;
+    return `assets/random/${random_num}.jpg`;
   }
 
   plantScore() {
     return this.difficulty * this.amount_of_water * this.frequency_of_water * amount_of_light / 10;
   }
-}
 
+  plantCard() {
+    var html = '';
+    html += '<div class="col-sm-4"><div class="card">';
 
-function assembleDetailsHTML(plantName, plantId) {
-  var random = Math.floor(Math.random() * 14) + 1;
-  html = '<div class="col-sm-4">';
-  html += '<div class="card">';
-  html += '<div class="card-image">';
-  html += `<img src="/assets/random/${random}.jpg" class="img-responsive">`;
+    html += '<div class="card-image">';
+    html += `<img src="${this.randomPhoto()}" class="img-responsive">`;
 
-  html += '<span class="card-title">';
-  html += `<h3>${plantName}</h3>`;
+    html += '<span class="card-title">';
+    html += `<h3>${this.name}</h3>`;
 
-  html += '<i class="fa fa-info"></i>';
-  html += `<a href="/plants/${plantId}" class="details">View Details</a>`;
-  html += '<i class="fa fa-pencil-square-o text-xs-right"></i>';
-  html += `<a href="/plants/${plantId}/tips/new">Leave Tip</a>`;
+    html += '<i class="fa fa-info"></i>';
+    html += `<a href="/plants/${this.id}" class="details">View Details</a>`;
+    html += '<i class="fa fa-pencil-square-o text-xs-right"></i>';
+    html += `<a href="/plants/${this.id}/tips/new">Leave Tip</a>`;
 
-  html += '</span>';
-  html += '</div>';
-  html += '</div>';
-  html += '</div>';
-  $('#plants').append(html);
+    html += '</span></div></div></div>';
+    return html;
+  }
 }
 
 function loadPlants() {
@@ -58,7 +54,7 @@ function loadPlants() {
         plant.frequency_of_water,
         plant.fun_fact
       );
-      assembleDetailsHTML(plant_obj.name, plant_obj.id);
+      $('#plants').append(plant_obj.plantCard());
     }
   });
 }
