@@ -13,6 +13,10 @@ class Plant {
     this.idPlus = this.id + 1;
   }
 
+  removeNextOrPrevious() {
+    this.idMinus = 0 ? this.idMinus = false : this.idMinus;
+  }
+
   plantScore() {
     return this.difficulty * this.amountOfWater * this.frequencyOfWater * this.amountOfLight / 10;
   }
@@ -60,7 +64,7 @@ function loadPlantDetails(plantId) {
 function attachPlantListeners() {
   $('#js-more-plants').click(loadPlantCards);
 
-  $('#plants').on('click', '#js-load-plant-details', function(event) {
+  $(document).on('click', '#js-load-plant-details', function(event) {
     event.preventDefault();
     event.stopPropagation();
     $('#overlay').fadeIn(400);
@@ -68,11 +72,11 @@ function attachPlantListeners() {
     loadPlantDetails($(this).attr('href'));
   });
 
-  $('#plants').on('mouseover', '.card-image', function() {
+  $(document).on('mouseover', '.card-image', function() {
     $(this).css('background', 'rgba(0, 0, 0, 0.4)');
   });
 
-  $('#plants').on('mouseout', '.card-image', function() {
+  $(document).on('mouseout', '.card-image', function() {
     $(this).css('background', '');
   });
 
@@ -84,10 +88,9 @@ function attachPlantListeners() {
   $(document).on('click', '#js-previous', function() {
     var previousPlant = $('#js-previous').attr('data-id');
     loadPlantDetails(previousPlant);
-
   });
 
-  $('#overlay').on('click', function() {
+  $(document).on('click', '#overlay', function() {
     $('div#plant-details.row').fadeOut(400);
     $('div#tip-details.row').fadeOut(400);
     $('#overlay').fadeOut(400);
