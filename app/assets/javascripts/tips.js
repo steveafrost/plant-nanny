@@ -17,12 +17,4 @@ function attachTipListeners() {
     var form = '<form>Whats your tip?<input field="text"></input></form>';
     $('div#plant-tips').prepend(form);
   });
-
-  $(document).on('click', '#js-load-tips', function(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    $('#overlay').fadeIn(400);
-    $('#all-tips').fadeIn(400);
-    loadTips($(this).attr('href'));
-  });
 }
