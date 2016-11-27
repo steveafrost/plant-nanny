@@ -9,16 +9,6 @@ class Tip {
   }
 }
 
-function loadTips(plantId) {
-  $.get('/plants/' + plantId + '/tips', function(response) {
-    tipsTemplateSource = $('#tips-template').html();
-    tipsTemplate = Handlebars.compile(tipsTemplateSource);
-    var allTips = tipsTemplate(response);
-    $('#plants').append(allTips);
-
-  });
-}
-
 function attachTipListeners() {
 
   $(document).on('click', '#js-add-tip', function(event) {

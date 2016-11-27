@@ -25,8 +25,6 @@
           <h3>{{name}} • {{plantScore}}</h3>
           <i class="fa fa-info"></i>
           <a href="{{id}}" id="js-load-plant-details">View Details</a>
-          <i class="fa fa-pencil-square-o text-xs-right"></i>
-          <a href="{{id}}" id="js-load-tips">Leave Tip</a>
         </span>
       </div>
     </div>
@@ -82,22 +80,6 @@
               <p>{{this.content}}</p>
             </blockquote>
           {{/each}}
-        </div>
-      </div>
-    </div>
-  </div>
-</script>
-
-<script id="tips-template" type="text/x-handlebars-template">
-  <div class="row" id="all-tips">
-    <div class="col-md-10 col-md-offset-1">
-      <div class="panel panel-default">
-        <div class="panel-body">
-        {{#each this}}
-          <blockquote>
-            <p>{{this.content}}</p>
-          </blockquote>
-        {{/each}}
         </div>
       </div>
     </div>
