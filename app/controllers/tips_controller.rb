@@ -1,6 +1,11 @@
 class TipsController < ApplicationController
   before_action :set_plant, except: [:recent, :show]
 
+  def index
+    @tips = Tip.all
+    render json: @tips
+  end
+
   def new
     @tip = Tip.new
   end

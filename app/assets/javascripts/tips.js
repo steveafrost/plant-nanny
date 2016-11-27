@@ -5,7 +5,7 @@ class Tip {
   }
 }
 
-Tip.prototype.createTip = function(first_argument) {
+Tip.prototype.createTip = function() {
   var html = '<blockquote>';
   html += `<p>${this.content}</p>`;
   html += '</blockquote>';
@@ -20,15 +20,17 @@ function loadTips(plantTips) {
   });
 }
 
-function loadTipDetails(clickedPlant) {
-  $.get(clickedPlant + '.json', function(response) {
-    var tips = response.tips;
-    loadTips(tips);
+function loadTipDetails(plantId) {
+  $.get('/plants/' + plantId + '/tips', function(response) {
+    $.each(response, function(index, tip) {
+      var tipsObj = new Tip(response);
+      var singleTip = tipsObj.createTip();
+    });
   });
 }
 
 function attachTipListeners() {
-  $(document).on('click', '#js-load-tip-details', function(event) {
+  $(document).on('click', '#js-load-tips', function(event) {
     event.preventDefault();
     event.stopPropagation();
     $('#overlay').fadeIn(400);

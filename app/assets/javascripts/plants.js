@@ -31,7 +31,6 @@ class Plant {
     Plant.detailsTemplate = Handlebars.compile(Plant.detailsTemplateSource);
     var plantDetails = Plant.detailsTemplate(this);
     $('.container-fluid').append(plantDetails);
-    // loadTips(this.tips);
   }
 }
 
