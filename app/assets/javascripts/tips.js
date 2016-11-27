@@ -28,7 +28,7 @@ function loadTipDetails(clickedPlant) {
 }
 
 function attachTipListeners() {
-  $('#plants').on('click', '#js-load-tip-details', function(event) {
+  $(document).on('click', '#js-load-tip-details', function(event) {
     event.preventDefault();
     event.stopPropagation();
     $('#overlay').fadeIn(400);
