@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require handlebars.min
 //= require_tree .
 
 $(function() {
