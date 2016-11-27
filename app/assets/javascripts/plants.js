@@ -63,7 +63,7 @@ function loadPlantDetails(clickedPlant) {
   });
 }
 
-function attachListeners() {
+function attachPlantListeners() {
   $('#js-more-plants').click(loadPlantCards);
 
   $('#plants').on('click', '.plant-details', function(event) {
@@ -72,14 +72,6 @@ function attachListeners() {
     $('#overlay').fadeIn(400);
     $('#plant-details').fadeIn(400);
     loadPlantDetails($(this).attr('href'));
-  });
-
-  $('#plants').on('click', '.tip-details', function(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    $('#overlay').fadeIn(400);
-    $('#tip-details').fadeIn(400);
-    loadTipDetails($(this).attr('href'));
   });
 
   $('#plants').on('mouseover', '.card-image', function() {
@@ -112,11 +104,3 @@ function attachListeners() {
     $('#overlay').fadeOut(400);
   });
 }
-
-
-
-
-$(function() {
-  attachListeners();
-  loadPlantCards();
-});

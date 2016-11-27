@@ -6,3 +6,11 @@
 <div id="overlay"></div>
 <%= render 'layouts/plant_details' %>
 <%= render 'layouts/tip_details' %>
+
+<script type="text/javascript">
+  $(function() {
+    attachPlantListeners();
+    attachTipListeners();
+    loadPlantCards();
+  });
+</script>

@@ -27,3 +27,13 @@ function loadTipDetails(clickedPlant) {
     loadTips(tips);
   });
 }
+
+function attachTipListeners() {
+  $('#plants').on('click', '.tip-details', function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    $('#overlay').fadeIn(400);
+    $('#tip-details').fadeIn(400);
+    loadTipDetails($(this).attr('href'));
+  });
+}
