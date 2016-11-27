@@ -14,7 +14,8 @@ function attachTipListeners() {
   $(document).on('click', '#js-add-tip', function(event) {
     event.preventDefault();
     event.stopPropagation();
-    var form = '<form>Whats your tip?<input field="text"></input></form>';
-    $('div#plant-tips').prepend(form);
+    $.get('/tips/new', function(response) {
+      $('div#plant-tips').prepend(response);
+    });
   });
 }

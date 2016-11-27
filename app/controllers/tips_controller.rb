@@ -1,5 +1,5 @@
 class TipsController < ApplicationController
-  before_action :set_plant, except: [:recent, :show]
+  before_action :set_plant, except: [:recent, :show, :new]
 
   def index
     @tips = Tip.all
@@ -7,7 +7,7 @@ class TipsController < ApplicationController
   end
 
   def new
-    @tip = Tip.new
+    render :layout => false
   end
 
   def create
