@@ -78,11 +78,13 @@ function attachPlantListeners() {
   $(document).on('click', '#js-next', function() {
     var nextPlant = $('#js-next').attr('data-id');
     loadPlantDetails(nextPlant);
+    $('#plant-details').first().remove();
   });
 
   $(document).on('click', '#js-previous', function() {
     var previousPlant = $('#js-previous').attr('data-id');
     loadPlantDetails(previousPlant);
+    $('#plant-details').first().remove();
   });
 
   $('#overlay').on('click', function() {
