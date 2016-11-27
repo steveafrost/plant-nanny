@@ -44,6 +44,11 @@ class Plant {
   }
 }
 
+$(function() {
+  Plant.cardsTemplateSource = $('#plant-card-template').html();
+  Plant.cardsTemplate = Handlebars.compile(Plant.cardsTemplateSource);
+});
+
 function loadPlantCards() {
   var i = $('.card').length;
   var endLoad = i + 6;
