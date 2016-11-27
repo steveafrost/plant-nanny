@@ -3,24 +3,14 @@ class Tip {
     this.content = attributes.content;
     this.timestamp = attributes.created_at;
   }
+
+  createTip() {
+    Tip.tipsTemplateSource = $('#tips-template').html();
+    Tip.tipsTemplate = Handlebars.compile(Tips.tipsTemplateSource);
+  }
 }
 
-Tip.prototype.createTip = function() {
-  var html = '<blockquote>';
-  html += `<p>${this.content}</p>`;
-  html += '</blockquote>';
-  return html;
-};
-
-function loadTips(plantTips) {
-  $('#plant-tips').empty();
-  $.each(plantTips, function(index, tip) {
-    var tip_obj = new Tip(tip);
-    $('#plant-tips').append(tip_obj.createTip());
-  });
-}
-
-function loadTipDetails(plantId) {
+function loadTips(plantId) {
   $.get('/plants/' + plantId + '/tips', function(response) {
     $.each(response, function(index, tip) {
       var tipsObj = new Tip(response);
