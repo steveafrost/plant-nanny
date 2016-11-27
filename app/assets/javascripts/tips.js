@@ -1,22 +1,21 @@
 class Tip {
-  constructor(content, created_at) {
-    this.content = content;
-    this.timestamp = created_at;
+  constructor(attributes) {
+    this.content = attributes.content;
+    this.timestamp = attributes.created_at;
   }
-
-  createTip() {
-    var html = '<blockquote>';
-    html += `<p>${this.content}</p>`;
-    html += '</blockquote>';
-    return html;
-  }
-
 }
+
+Tip.prototype.createTip = function(first_argument) {
+  var html = '<blockquote>';
+  html += `<p>${this.content}</p>`;
+  html += '</blockquote>';
+  return html;
+};
 
 function loadTips(plantTips) {
   $('#plant-tips').empty();
   $.each(plantTips, function(index, tip) {
-    var tip_obj = new Tip(tip.content, tip.created_at);
+    var tip_obj = new Tip(tip);
     $('#plant-tips').append(tip_obj.createTip());
   });
 }
