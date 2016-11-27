@@ -15,7 +15,7 @@ class Tip {
 function loadTips(plantId) {
   $.get('/plants/' + plantId + '/tips', function(response) {
     $.each(response, function(index, tip) {
-      var tipsObj = new Tip(response);
+      var tipsObj = new Tip(tip);
       var singleTip = tipsObj.createTip();
     });
   });
@@ -26,7 +26,7 @@ function attachTipListeners() {
     event.preventDefault();
     event.stopPropagation();
     $('#overlay').fadeIn(400);
-    $('#tip-details').fadeIn(400);
+    $('#all-tips').fadeIn(400);
     loadTips($(this).attr('href'));
   });
 }

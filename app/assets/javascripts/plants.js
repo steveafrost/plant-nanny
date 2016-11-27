@@ -92,7 +92,7 @@ function attachPlantListeners() {
 
   $(document).on('click', '#overlay', function() {
     $('div#plant-details.row').fadeOut(400);
-    $('div#tip-details.row').fadeOut(400);
+    $('div#all-tips.row').fadeOut(400);
     $('#overlay').fadeOut(400);
   });
 }
