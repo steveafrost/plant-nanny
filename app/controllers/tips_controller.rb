@@ -2,8 +2,7 @@ class TipsController < ApplicationController
   before_action :set_plant, except: [:recent, :show]
 
   def index
-    @tips = Tip.all
-    render json: @tips
+    render json: @plant.tips
   end
 
   def new

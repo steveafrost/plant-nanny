@@ -1,3 +1,3 @@
 class TipSerializer < ActiveModel::Serializer
-  attributes :id, :content, :created_at
+  attributes :id, :content
 end

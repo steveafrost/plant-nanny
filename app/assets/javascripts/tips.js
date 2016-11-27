@@ -1,22 +1,11 @@
 class Tip {
   constructor(attributes) {
     this.content = attributes.content;
-    this.timestamp = attributes.created_at;
   }
 
-  createTip(allTipsArray) {
+  createTip() {
 
   }
-}
-
-function loadTips(plantId) {
-  $.get('/plants/' + plantId + '/tips', function(response) {
-    tipsTemplateSource = $('#tips-template').html();
-    tipsTemplate = Handlebars.compile(tipsTemplateSource);
-    var allTips = tipsTemplate(response);
-    $('#plants').append(allTips);
-
-  });
 }
 
 function attachTipListeners() {
