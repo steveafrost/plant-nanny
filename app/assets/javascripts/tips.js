@@ -11,11 +11,16 @@ class Tip {
 
 function attachTipListeners() {
 
-  $(document).on('click', '#js-add-tip', function(event) {
+  $(document).one('click', '#js-add-tip', function(event) {
     event.preventDefault();
     event.stopPropagation();
     $.get('/tips/new', function(response) {
       $('div#plant-tips').prepend(response);
     });
+  });
+
+  $(document).on('click', '#js-create-tip', function(event) {
+    event.preventDefault();
+    console.log($('#tip-content').val());
   });
 }
