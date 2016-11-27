@@ -8,11 +8,7 @@ class Plant {
     this.frequency_of_water = attributes.frequency_of_water;
     this.fun_fact = attributes.fun_fact;
     this.tips = attributes.tips;
-  }
-
-  randomPhoto() {
-    var random_num = Math.floor(Math.random() * 14) + 1;
-    return `assets/random/${random_num}.jpg`;
+    this.random_num = Math.floor(Math.random() * 14) + 1;
   }
 
   plantScore() {
@@ -20,15 +16,7 @@ class Plant {
   }
 
   createCard() {
-    var html = '<div class="col-sm-4"><div class="card"><div class="card-image">';
-    html += `<img src="${this.randomPhoto()}" class="img-responsive">`;
-    html += `<span class="card-title"><h3>${this.name} • ${this.plantScore()}</h3>`;
-    html += '<i class="fa fa-info"></i>';
-    html += `<a href="/plants/${this.id}" class="plant-details">View Details</a>`;
-    html += '<i class="fa fa-pencil-square-o text-xs-right"></i>';
-    html += `<a href="/plants/${this.id}" class="tip-details">Leave Tip</a>`;
-    html += '</span></div></div></div>';
-    return html;
+    return Plant.cardsTemplate(this);
   }
 
   createDetail() {
@@ -49,14 +37,16 @@ $(function() {
   Plant.cardsTemplate = Handlebars.compile(Plant.cardsTemplateSource);
 });
 
+
 function loadPlantCards() {
   var i = $('.card').length;
   var endLoad = i + 6;
 
   $.get('/plants.json', function(response) {
     for (i; i < endLoad; i++) {
-      var plant_obj = new Plant(response[i]);
-      $('#plants').append(plant_obj.createCard());
+      var plantObj = new Plant(response[i]);
+      var plantCard = plantObj.createCard();
+      $('#plants').append(plantCard);
     }
   });
 }
