@@ -63,7 +63,7 @@ function attachPlantListeners() {
     event.preventDefault();
     event.stopPropagation();
     $('#overlay').fadeIn(400);
-    $('#plant-details').hide(400);
+    $('#plant-details').fadeIn(400);
     loadPlantDetails($(this).attr('href'));
   });
 
@@ -92,8 +92,8 @@ function attachPlantListeners() {
   });
 
   $('#overlay').on('click', function() {
-    $('#plant-details').fadeOut(400);
-    $('#tip-details').fadeOut(400);
+    $('div#plant-details.row').fadeOut(400);
+    $('div#tip-details.row').fadeOut(400);
     $('#overlay').fadeOut(400);
   });
 }
