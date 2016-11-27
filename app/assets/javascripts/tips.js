@@ -4,7 +4,7 @@ class Tip {
     this.timestamp = attributes.created_at;
   }
 
-  createTip(allTipsArray) {
+  createTip() {
 
   }
 }
@@ -20,6 +20,14 @@ function loadTips(plantId) {
 }
 
 function attachTipListeners() {
+
+  $(document).on('click', '#js-add-tip', function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    var form = '<form>Whats your tip?<input field="text"></input></form>';
+    $('div#plant-tips').prepend(form);
+  });
+
   $(document).on('click', '#js-load-tips', function(event) {
     event.preventDefault();
     event.stopPropagation();
