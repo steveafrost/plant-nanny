@@ -4,20 +4,18 @@ class Tip {
     this.timestamp = attributes.created_at;
   }
 
-  createTip() {
-    Tip.tipsTemplateSource = $('#tips-template').html();
-    Tip.tipsTemplate = Handlebars.compile(Tip.tipsTemplateSource);
-    var tip = Tip.tipsTemplate(this);
-    $('#all-tips').append(tip);
+  createTip(allTipsArray) {
+
   }
 }
 
 function loadTips(plantId) {
   $.get('/plants/' + plantId + '/tips', function(response) {
-    $.each(response, function(index, tip) {
-      var tipsObj = new Tip(tip);
-      var singleTip = tipsObj.createTip();
-    });
+    tipsTemplateSource = $('#tips-template').html();
+    tipsTemplate = Handlebars.compile(tipsTemplateSource);
+    var allTips = tipsTemplate(response);
+    $('#plants').append(allTips);
+
   });
 }
 
