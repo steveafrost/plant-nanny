@@ -9,6 +9,8 @@ class Plant {
     this.funFact = attributes.fun_fact;
     this.tips = attributes.tips;
     this.randomNum = Math.floor(Math.random() * 14) + 1;
+    this.idMinus = this.id - 1;
+    this.idPlus = this.id + 1;
   }
 
   plantScore() {
