@@ -1,4 +1,6 @@
 <%= fields_for(Tip.new) do |f| %>
-  <%= f.text_area :content %>
-  <%= f.submit :class => "btn btn-success" %>
+  <%= f.text_area :content, style: 'width:80%; height:50px' %>
+  <br />
+  <%= f.submit :class => "btn btn-success", :id => "js-create-tip" %>
 <% end %>
+<br /><br />
