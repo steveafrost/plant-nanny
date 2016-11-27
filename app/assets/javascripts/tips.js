@@ -6,7 +6,9 @@ class Tip {
 
   createTip() {
     Tip.tipsTemplateSource = $('#tips-template').html();
-    Tip.tipsTemplate = Handlebars.compile(Tips.tipsTemplateSource);
+    Tip.tipsTemplate = Handlebars.compile(Tip.tipsTemplateSource);
+    var tip = Tip.tipsTemplate(this);
+    $('#all-tips').append(tip);
   }
 }
 
@@ -25,6 +27,6 @@ function attachTipListeners() {
     event.stopPropagation();
     $('#overlay').fadeIn(400);
     $('#tip-details').fadeIn(400);
-    loadTipDetails($(this).attr('href'));
+    loadTips($(this).attr('href'));
   });
 }
