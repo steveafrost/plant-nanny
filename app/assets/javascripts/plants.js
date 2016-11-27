@@ -79,20 +79,4 @@ function attachPlantListeners() {
   $(document).on('mouseout', '.card-image', function() {
     $(this).css('background', '');
   });
-
-  $(document).on('click', '#js-next', function() {
-    var nextPlant = $('#js-next').attr('data-id');
-    loadPlantDetails(nextPlant);
-  });
-
-  $(document).on('click', '#js-previous', function() {
-    var previousPlant = $('#js-previous').attr('data-id');
-    loadPlantDetails(previousPlant);
-  });
-
-  $(document).on('click', '#overlay', function() {
-    $('div#plant-details.row').fadeOut(400);
-    $('div#all-tips.row').fadeOut(400);
-    $('#overlay').fadeOut(400);
-  });
 }
