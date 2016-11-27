@@ -22,14 +22,7 @@ class Plant {
   }
 
   createDetail() {
-    $('#plant-name').text(this.name);
-    $('.fa-line-chart').text(this.difficulty);
-    $('.fa-sun-o').text(this.amountOfLight);
-    $('.fa-tint').text(this.amountOfWater);
-    $('.fa-clock-o').text(this.frequencyOfWater);
-    $('#plant-fun-fact').text(this.funFact);
-    $('#js-next').attr('data-id', this.id + 1);
-    $('#js-previous').attr('data-id', this.id - 1);
+    return Plant.detailsTemplate(this);
     loadTips(this.tips);
   }
 }
@@ -37,6 +30,8 @@ class Plant {
 $(function() {
   Plant.cardsTemplateSource = $('#plant-card-template').html();
   Plant.cardsTemplate = Handlebars.compile(Plant.cardsTemplateSource);
+  Plant.detailsTemplateSource = $('#plant-details-template').html();
+  Plant.detailsTemplate = Handlebars.compile(Plant.detailsTemplateSource);
 });
 
 
