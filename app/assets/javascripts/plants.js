@@ -3,16 +3,16 @@ class Plant {
     this.id = attributes.id;
     this.name = attributes.name;
     this.difficulty = attributes.difficulty;
-    this.amount_of_light = attributes.amount_of_light;
-    this.amount_of_water = attributes.amount_of_water;
-    this.frequency_of_water = attributes.frequency_of_water;
-    this.fun_fact = attributes.fun_fact;
+    this.amountOfLight = attributes.amount_of_light;
+    this.amountOfWater = attributes.amount_of_water;
+    this.frequencyOfWater = attributes.frequency_of_water;
+    this.funFact = attributes.fun_fact;
     this.tips = attributes.tips;
-    this.random_num = Math.floor(Math.random() * 14) + 1;
+    this.randomNum = Math.floor(Math.random() * 14) + 1;
   }
 
   plantScore() {
-    return this.difficulty * this.amount_of_water * this.frequency_of_water * this.amount_of_light / 10;
+    return this.difficulty * this.amountOfWater * this.frequencyOfWater * this.amountOfLight / 10;
   }
 
   createCard() {
@@ -22,10 +22,10 @@ class Plant {
   createDetail() {
     $('#plant-name').text(this.name);
     $('.fa-line-chart').text(this.difficulty);
-    $('.fa-sun-o').text(this.amount_of_light);
-    $('.fa-tint').text(this.amount_of_water);
-    $('.fa-clock-o').text(this.frequency_of_water);
-    $('#plant-fun-fact').text(this.fun_fact);
+    $('.fa-sun-o').text(this.amountOfLight);
+    $('.fa-tint').text(this.amountOfWater);
+    $('.fa-clock-o').text(this.frequencyOfWater);
+    $('#plant-fun-fact').text(this.funFact);
     $('#js-next').attr('data-id', this.id + 1);
     $('#js-previous').attr('data-id', this.id - 1);
     loadTips(this.tips);
