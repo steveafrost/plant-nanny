@@ -1,13 +1,13 @@
 class Plant {
-  constructor(id, name, difficulty, a_of_l, a_of_w, f_of_w, fun_fact, tips) {
-    this.id = id;
-    this.name = name;
-    this.difficulty = difficulty;
-    this.amount_of_light = a_of_l;
-    this.amount_of_water = a_of_w;
-    this.frequency_of_water = f_of_w;
-    this.fun_fact = fun_fact;
-    this.tips = tips;
+  constructor(attributes) {
+    this.id = attributes.id;
+    this.name = attributes.name;
+    this.difficulty = attributes.difficulty;
+    this.amount_of_light = attributes.amount_of_light;
+    this.amount_of_water = attributes.amount_of_water;
+    this.frequency_of_water = attributes.frequency_of_water;
+    this.fun_fact = attributes.fun_fact;
+    this.tips = attributes.tips;
   }
 
   randomPhoto() {
@@ -45,13 +45,12 @@ class Plant {
 }
 
 function loadPlantCards() {
-  var currentPlants = $('.card').length;
-  var endLoad = currentPlants + 6;
+  var i = $('.card').length;
+  var endLoad = i + 6;
 
   $.get('/plants.json', function(response) {
-    for (currentPlants; currentPlants < endLoad; currentPlants++) {
-      var plant = response[currentPlants];
-      var plant_obj = new Plant(plant.id, plant.name, plant.difficulty, plant.amount_of_light, plant.amount_of_water, plant.frequency_of_water, plant.fun_fact);
+    for (i; i < endLoad; i++) {
+      var plant_obj = new Plant(response[i]);
       $('#plants').append(plant_obj.createCard());
     }
   });
@@ -59,8 +58,7 @@ function loadPlantCards() {
 
 function loadPlantDetails(clickedPlant) {
   $.get(clickedPlant + '.json', function(response) {
-    var plant = response;
-    var plant_obj = new Plant(plant.id, plant.name, plant.difficulty, plant.amount_of_light, plant.amount_of_water, plant.frequency_of_water, plant.fun_fact, plant.tips);
+    var plant_obj = new Plant(response);
     plant_obj.createDetail();
   });
 }
@@ -94,16 +92,16 @@ function attachListeners() {
 
   $('#plant-details').on('click', '#js-next', function() {
     var nextPlant = $('#js-next').attr('data-id');
-    $.get('/plants/' + nextPlant + '.json', function(plant) {
-      var plant_obj = new Plant(plant.id, plant.name, plant.difficulty, plant.amount_of_light, plant.amount_of_water, plant.frequency_of_water, plant.fun_fact, plant.tips);
+    $.get('/plants/' + nextPlant + '.json', function(response) {
+      var plant_obj = new Plant(response);
       plant_obj.createDetail();
     });
   });
 
   $('#plant-details').on('click', '#js-previous', function() {
     var previousPlant = $('#js-previous').attr('data-id');
-    $.get('/plants/' + previousPlant + '.json', function(plant) {
-      var plant_obj = new Plant(plant.id, plant.name, plant.difficulty, plant.amount_of_light, plant.amount_of_water, plant.frequency_of_water, plant.fun_fact, plant.tips);
+    $.get('/plants/' + previousPlant + '.json', function(response) {
+      var plant_obj = new Plant(response);
       plant_obj.createDetail();
     });
   });
