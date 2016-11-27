@@ -14,6 +14,7 @@
   });
 </script>
 
+<!-- Handlebar Templates -->
 <script id="plant-card-template" type="text/x-handlebars-template">
   <div class="col-sm-4">
     <div class="card">
@@ -38,6 +39,7 @@
         <div class="panel-heading">
           <button id="js-previous" class="btn btn-success" data-id="{{idMinus}}">Previous</button>
           <button id="js-next" class="btn btn-success" data-id="{{idPlus}}">Next</button>
+
           <h1 id="plant-name">{{name}}</h1>
         </div>
         <div class="panel-body">
@@ -72,6 +74,11 @@
           <h4>Tips</h4>
         </div>
         <div class="panel-body" id="plant-tips">
+          {{#each tips}}
+            <blockquote>
+              <p>{{this.content}}</p>
+            </blockquote>
+          {{/each}}
         </div>
       </div>
     </div>

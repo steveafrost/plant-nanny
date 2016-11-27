@@ -50,6 +50,7 @@ function loadPlantCards() {
 }
 
 function loadPlantDetails(plantId) {
+  $('#plant-details').first().remove();
   $.get('/plants/' + plantId + '.json', function(response) {
     var plant_obj = new Plant(response);
     var plantDetails = plant_obj.createDetail();
@@ -78,13 +79,12 @@ function attachPlantListeners() {
   $(document).on('click', '#js-next', function() {
     var nextPlant = $('#js-next').attr('data-id');
     loadPlantDetails(nextPlant);
-    $('#plant-details').first().remove();
   });
 
   $(document).on('click', '#js-previous', function() {
     var previousPlant = $('#js-previous').attr('data-id');
     loadPlantDetails(previousPlant);
-    $('#plant-details').first().remove();
+
   });
 
   $('#overlay').on('click', function() {
