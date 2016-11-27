@@ -22,7 +22,10 @@ class Plant {
   }
 
   createDetail() {
-    return Plant.detailsTemplate(this);
+    Plant.detailsTemplateSource = $('#plant-details-template').html();
+    Plant.detailsTemplate = Handlebars.compile(Plant.detailsTemplateSource);
+    var plantDetails = Plant.detailsTemplate(this);
+    $('.container-fluid').append(plantDetails);
     // loadTips(this.tips);
   }
 }
@@ -30,8 +33,6 @@ class Plant {
 $(function() {
   Plant.cardsTemplateSource = $('#plant-card-template').html();
   Plant.cardsTemplate = Handlebars.compile(Plant.cardsTemplateSource);
-  Plant.detailsTemplateSource = $('#plant-details-template').html();
-  Plant.detailsTemplate = Handlebars.compile(Plant.detailsTemplateSource);
 });
 
 
@@ -52,7 +53,6 @@ function loadPlantDetails(clickedPlant) {
   $.get(clickedPlant + '.json', function(response) {
     var plant_obj = new Plant(response);
     var plantDetails = plant_obj.createDetail();
-    $('.container-fluid').append(plantDetails);
   });
 }
 
@@ -75,19 +75,20 @@ function attachPlantListeners() {
     $(this).css('background', '');
   });
 
-  $('#plant-details').on('click', '#js-next', function() {
+  $(document).on('click', '#js-next', function() {
     var nextPlant = $('#js-next').attr('data-id');
     $.get('/plants/' + nextPlant + '.json', function(response) {
-      var plant_obj = new Plant(response);
-      plant_obj.createDetail();
+      var plantObj = new Plant(response);
+      plantObj.createDetail();
+
     });
   });
 
-  $('#plant-details').on('click', '#js-previous', function() {
+  $(document).on('click', '#js-previous', function() {
     var previousPlant = $('#js-previous').attr('data-id');
     $.get('/plants/' + previousPlant + '.json', function(response) {
-      var plant_obj = new Plant(response);
-      plant_obj.createDetail();
+      var plantObj = new Plant(response);
+      plantObj.createDetail();
     });
   });
 
