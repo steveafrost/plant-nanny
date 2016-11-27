@@ -23,7 +23,7 @@ class Plant {
 
   createDetail() {
     return Plant.detailsTemplate(this);
-    loadTips(this.tips);
+    // loadTips(this.tips);
   }
 }
 
@@ -51,18 +51,19 @@ function loadPlantCards() {
 function loadPlantDetails(clickedPlant) {
   $.get(clickedPlant + '.json', function(response) {
     var plant_obj = new Plant(response);
-    plant_obj.createDetail();
+    var plantDetails = plant_obj.createDetail();
+    $('.container-fluid').append(plantDetails);
   });
 }
 
 function attachPlantListeners() {
   $('#js-more-plants').click(loadPlantCards);
 
-  $('#plants').on('click', '.plant-details', function(event) {
+  $('#plants').on('click', '#js-load-plant-details', function(event) {
     event.preventDefault();
     event.stopPropagation();
     $('#overlay').fadeIn(400);
-    $('#plant-details').fadeIn(400);
+    $('#plant-details').hide(400);
     loadPlantDetails($(this).attr('href'));
   });
 
