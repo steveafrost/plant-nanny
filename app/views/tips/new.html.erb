@@ -1,6 +1,12 @@
-<%= form_for(@tip, :url => plant_tips_path(@plant)) do |f| %>
-  <%= f.text_area :content, :id => 'tip-content', style: 'width:80%; height:50px' %>
-  <br />
-  <%= f.submit :class => "btn btn-success", :id => "js-create-tip" %>
-<% end %>
-<br /><br />
+<div class="container col-sm-6 col-sm-offset-3">
+  <h2>New Tip for <%= @plant.name %></h2>
+
+  <%= form_for [@plant, @tip] do |f| %>
+    <div class="form-group">
+    <%= f.label :content %>
+    <%= f.text_area :content, :class => "form-control" %>
+    </div>
+
+    <%= f.submit :class => "btn btn-success" %>
+  <% end %>
+</div>

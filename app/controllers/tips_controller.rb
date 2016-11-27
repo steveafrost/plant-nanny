@@ -7,7 +7,7 @@ class TipsController < ApplicationController
   end
 
   def new
-    render :layout => false
+    @tip = Tip.new
   end
 
   def create
