@@ -13,6 +13,7 @@ class Plant {
     this.idPlus = this.id + 1;
   }
 
+  // can use this in Handlebars if we can figure out conditional for idPlus to hide itself if it's higher than number of Plants in database
   removeNextOrPrevious() {
     this.idMinus = 0 ? this.idMinus = false : this.idMinus;
   }
