@@ -13,6 +13,7 @@
     attachPlantListeners();
     attachTipListeners();
     loadPlantCards();
+
   });
 </script>
 
@@ -89,4 +90,16 @@
       </div>
     </div>
   </div>
+</script>
+
+<script id="new-tip-template" type="text/x-handlebars-template">
+  <form class="new_tip" id="new_tip" action="/plants/{{id}}/tips" accept-charset="UTF-8" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <div class="form-group">
+    <label for="tip_content">Content</label>
+    <textarea class="form-control" name="tip[content]" id="tip_content"></textarea>
+    </div>
+
+    <input type="submit" name="commit" value="Create Tip" class="btn btn-success" data-disable-with="Create Tip">
+</form>
 </script>

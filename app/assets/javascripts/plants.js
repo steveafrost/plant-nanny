@@ -32,6 +32,13 @@ class Plant {
     var plantDetails = Plant.detailsTemplate(this);
     $('.container-fluid').append(plantDetails);
   }
+
+  createTipForm() {
+    Plant.tipFormSource = $("#new-tip-template").html();
+    Plant.tipFormtemplate = Handlebars.compile(Plant.tipFormSource);
+    var tipForm = Plant.tipFormtemplate(this);
+    $('div#plant-tips').prepend(tipForm);
+  }
 }
 
 $(function() {
@@ -54,7 +61,7 @@ function loadPlantCards() {
 }
 
 function loadPlantDetails(plantId) {
-  $('#plant-details').first().remove();
+  $('#plant-details').remove();
   $.get('/plants/' + plantId + '.json', function(response) {
     var plant_obj = new Plant(response);
     var plantDetails = plant_obj.createDetail();
