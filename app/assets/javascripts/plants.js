@@ -63,8 +63,9 @@ function loadPlantCards() {
 function loadPlantDetails(plantId) {
   $('#plant-details').remove();
   $.get('/plants/' + plantId + '.json', function(response) {
-    var plant_obj = new Plant(response);
-    var plantDetails = plant_obj.createDetail();
+    var plantObj = new Plant(response);
+    var plantDetails = plantObj.createDetail();
+    var tipForm = plantObj.createTipForm();
   });
 }
 
