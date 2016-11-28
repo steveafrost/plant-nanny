@@ -23,7 +23,10 @@ class Plant {
   }
 
   createCard() {
-    return Plant.cardsTemplate(this);
+    Plant.cardsTemplateSource = $('#plant-card-template').html();
+    Plant.cardsTemplate = Handlebars.compile(Plant.cardsTemplateSource);
+    var plantCard = Plant.cardsTemplate(this);
+    $('#plants').append(plantCard);
   }
 
   createDetail() {
@@ -41,12 +44,6 @@ class Plant {
   }
 }
 
-$(function() {
-  Plant.cardsTemplateSource = $('#plant-card-template').html();
-  Plant.cardsTemplate = Handlebars.compile(Plant.cardsTemplateSource);
-});
-
-
 function loadPlantCards() {
   var i = $('.card').length;
   var endLoad = i + 6;
@@ -55,7 +52,6 @@ function loadPlantCards() {
     for (i; i < endLoad; i++) {
       var plantObj = new Plant(response[i]);
       var plantCard = plantObj.createCard();
-      $('#plants').append(plantCard);
     }
   });
 }
