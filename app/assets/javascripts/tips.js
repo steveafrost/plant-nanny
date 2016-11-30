@@ -19,6 +19,7 @@ function attachTipListeners() {
 
   $(document).on('click', '#js-create-tip', function(event) {
     event.preventDefault();
-    console.log($('#tip-content').val());
+    newTip = $('.tip_content:eq(1)').val();
+
   });
 }

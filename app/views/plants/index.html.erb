@@ -96,10 +96,10 @@
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <div class="form-group">
     <label for="tip_content">Content</label>
-    <textarea class="form-control" name="tip[content]" id="tip_content"></textarea>
+    <textarea class="form-control tip_content" name="tip[content]"></textarea>
     </div>
 
-    <input type="submit" name="commit" value="Create Tip" class="btn btn-success" data-disable-with="Create Tip">
+    <input type="submit" name="commit" value="Create Tip" class="btn btn-success" id="js-create-tip" data-disable-with="Create Tip">
   </form>
   <br>
 </script>
