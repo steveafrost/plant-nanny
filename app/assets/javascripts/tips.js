@@ -33,9 +33,10 @@ function attachTipListeners() {
       url: url,
       data: data,
       success: function(response) {
-        debugger
+        $('.tip_content:eq(1)').val('');
+        $('div#plant-tips').append(response);
       }
-    })
+    });
   });
 
 }

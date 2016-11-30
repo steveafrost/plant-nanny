@@ -12,7 +12,7 @@ class TipsController < ApplicationController
 
   def create
     @plant.tips << Tip.create(tip_params)
-    redirect_to plant_tip_path(@plant, @plant.tips.last)
+    render 'overlay_response', :layout => false
   end
 
   def show
