@@ -92,7 +92,7 @@
 </script>
 
 <script id="new-tip-template" type="text/x-handlebars-template">
-  <form class="new_tip" id="new_tip" action="/plants/{{id}}/tips" accept-charset="UTF-8" method="post">
+  <form class="new_tip" action="/plants/{{id}}/tips" accept-charset="UTF-8" method="post" data-id="{{id}}">
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <div class="form-group">
     <label for="tip_content">Content</label>

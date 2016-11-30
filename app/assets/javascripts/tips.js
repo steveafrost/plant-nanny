@@ -24,8 +24,18 @@ function attachTipListeners() {
       'authenticity_token': $('input[name="authenticity_token"]').val(),
       'tip': {
         'content': $('.tip_content:eq(1)').val()
-      }
+      },
+      'plant_id': 1
     };
+
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: data,
+      success: function(response) {
+        debugger
+      }
+    })
   });
 
 }
