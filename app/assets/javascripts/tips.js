@@ -19,19 +19,11 @@ function attachTipListeners() {
 
   $(document).on('submit', '.new_tip', function(event) {
     event.preventDefault();
-    url = this.action;
-    data = {
-      'authenticity_token': $('input[name="authenticity_token"]').val(),
-      'tip': {
-        'content': $('.tip_content:eq(1)').val()
-      },
-      'plant_id': 1
-    };
 
     $.ajax({
       type: "POST",
-      url: url,
-      data: data,
+      url: this.action,
+      data: $(this).serialize(),
       success: function(response) {
         $('.tip_content:eq(1)').val('');
         $('div#plant-tips').append(response);
