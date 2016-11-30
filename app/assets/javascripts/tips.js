@@ -17,9 +17,15 @@ function attachTipListeners() {
 
   });
 
-  $(document).on('click', '#js-create-tip', function(event) {
+  $(document).on('submit', '.new_tip', function(event) {
     event.preventDefault();
-    newTip = $('.tip_content:eq(1)').val();
-
+    url = this.action;
+    data = {
+      'authenticity_token': $('input[name="authenticity_token"]').val(),
+      'tip': {
+        'content': $('.tip_content:eq(1)').val()
+      }
+    };
   });
+
 }
