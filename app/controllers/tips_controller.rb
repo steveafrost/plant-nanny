@@ -30,7 +30,7 @@ class TipsController < ApplicationController
   private
 
   def tip_params
-    params.require(:tip).permit(:content).merge(user_id: current_user.id)
+    params.require(:tip).permit(:content)
   end
 
   def set_plant

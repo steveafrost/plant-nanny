@@ -1,4 +1,4 @@
 <blockquote>
   <p><%= tip.content %></p>
-  <footer><cite><%= tip.user.name || "Anonymous" %> • <%= link_to "#{time_ago_in_words(tip.created_at)} ago", plant_tip_path(tip.plant, tip) %></cite></footer>
+  <footer><cite><%= link_to "#{time_ago_in_words(tip.created_at)} ago", plant_tip_path(tip.plant, tip) %></cite></footer>
 </blockquote>
