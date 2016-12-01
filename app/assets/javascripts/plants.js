@@ -57,8 +57,8 @@ function loadPlantCards() {
 }
 
 function loadPlantDetails(plantId) {
-  $('#plant-details').remove();
   $.get('/plants/' + plantId + '.json', function(response) {
+    $('.plant-details').remove();
     var plantObj = new Plant(response);
     var plantDetails = plantObj.createDetail();
     var tipForm = plantObj.createTipForm();
@@ -72,7 +72,7 @@ function attachPlantListeners() {
     event.preventDefault();
     event.stopPropagation();
     $('#overlay').fadeIn(400);
-    $('#plant-details').fadeIn(400);
+    $('.plant-details').fadeIn(400);
     loadPlantDetails($(this).attr('href'));
   });
 
@@ -95,7 +95,7 @@ function attachPlantListeners() {
   });
 
   $(document).on('click', '#overlay', function() {
-    $('div#plant-details.row').fadeOut(400);
+    $('div.plant-details').fadeOut(400);
     $('div#all-tips.row').fadeOut(400);
     $('#overlay').fadeOut(400);
   });
