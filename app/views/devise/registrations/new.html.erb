@@ -8,6 +8,7 @@
   <center><h4>------ OR ------</h4></center>
   <br>
 
+  <center>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 
@@ -38,6 +39,7 @@
       <%= f.submit "Sign up", :class => "btn btn-primary sign-up" %>
     </div>
   <% end %>
+  </center>
 </div>
 
 

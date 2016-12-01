@@ -8,6 +8,7 @@
   <center><h4>------ OR ------</h4></center>
   <br>
 
+  <center>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group">
       <%= f.label :email %><br />
@@ -34,4 +35,5 @@
   <br>
 
   <%= render "devise/shared/links" %>
+  </center>
 </div>
