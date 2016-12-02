@@ -27,6 +27,7 @@ function attachTipListeners() {
       url: this.action,
       data: $(this).serialize(),
       success: function(response) {
+        $('.error:eq(1)').html('');
         $('.tip-content:eq(1)').val('');
         $('div#plant-tips').append(response);
       }
