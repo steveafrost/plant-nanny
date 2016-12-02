@@ -3,16 +3,9 @@ class Tip {
     this.content = attributes.content;
     this.timestamp = attributes.created_at;
   }
-
-  createTip() {
-
-  }
 }
 
-
-
 function attachTipListeners() {
-
 
   $(document).on('submit', '.new-tip', function(event) {
     event.preventDefault();
@@ -33,5 +26,4 @@ function attachTipListeners() {
       }
     });
   });
-
 }
