@@ -14,10 +14,10 @@ class Tip {
 function attachTipListeners() {
 
 
-  $(document).on('submit', '.new_tip', function(event) {
+  $(document).on('submit', '.new-tip', function(event) {
     event.preventDefault();
 
-    var new_tip = $('.tip_content:eq(1)').val();
+    var new_tip = $('.tip-content:eq(1)').val();
     if (new_tip === '') {
       return $('.error:eq(1)').html('<h5 class="error">You cannot leave a blank tip<h5>');
     }
@@ -27,7 +27,7 @@ function attachTipListeners() {
       url: this.action,
       data: $(this).serialize(),
       success: function(response) {
-        $('.tip_content:eq(1)').val('');
+        $('.tip-content:eq(1)').val('');
         $('div#plant-tips').append(response);
       }
     });
