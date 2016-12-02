@@ -12,20 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require handlebars.min
 //= require_tree .
-
-$(function() {
-    var flashCallback;
-    flashCallback = function() {
-        return $(".alert").fadeOut();
-    };
-    $(".alert").bind('click', (function(_this) {
-        return function(ev) {
-            return $(".alert").fadeOut();
-        };
-    })(this));
-    return setTimeout(flashCallback, 3000);
-});
