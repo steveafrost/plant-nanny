@@ -9,16 +9,18 @@ class Tip {
   }
 }
 
+
+
 function attachTipListeners() {
 
-  $(document).one('click', '#js-add-tip', function(event) {
-    event.preventDefault();
-    event.stopPropagation();
-
-  });
 
   $(document).on('submit', '.new_tip', function(event) {
     event.preventDefault();
+
+    var new_tip = $('.tip_content:eq(1)').val();
+    if (new_tip === '') {
+      return $('.error:eq(1)').html('<h5 class="error">You cannot leave a blank tip<h5>');
+    }
 
     $.ajax({
       type: "POST",

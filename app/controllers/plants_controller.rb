@@ -4,7 +4,7 @@ class PlantsController < ApplicationController
   def index
     @plants = Plant.all
     respond_to do |f|
-      f.html {render :index}
+      f.html
       f.json {render json: @plants}
     end
   end
@@ -28,7 +28,7 @@ class PlantsController < ApplicationController
 
   def show
     respond_to do |f|
-      f.html {render :show}
+      f.html
       f.json {render json: @plant}
     end
   end
