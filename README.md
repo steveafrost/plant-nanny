@@ -1,4 +1,4 @@
-![plant nanny logo](https://d3vv6lp55qjaqc.cloudfront.net/items/2f2Y3N2Q2G1Y450T373s/plantnannylogoforgithub.jpg)
+![plant nanny logo](https://steveafrost.com/assets/img/blogs/plantnannyghlogo.jpg)
 Plant Nanny helps with managing indoor plants. Some indoor plants require sunlight you may not have, watering you don't have time for, or difficulty you just plain don't care to challenge. Plant Nanny aims to weed out the hardest plants to grow indoors and provide grounds for users to leave tips about plants with which they've had success. (all puns intended)
 
 ## Getting Started
